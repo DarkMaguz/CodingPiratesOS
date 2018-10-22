@@ -2,12 +2,14 @@
 
 if [ ! -d ../distro/ ]; then
 	mkdir -p ../distro/
+	cd ../distro/
+else
+	cd ../distro/
+	sudo lb clean --all
 fi
 
-cd ../distro/
-
 #sudo apt install live-build build-essential chroot
-sudo lb clean --all
+
 
 lb config --apt-indices false \
           --apt-recommends true \
