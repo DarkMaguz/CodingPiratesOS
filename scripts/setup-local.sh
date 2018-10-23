@@ -1,5 +1,6 @@
 #!/bin/sh -e
-
+echo "Please setup this script before running it!"
+exit
 #Bugfix for missing /sbin and /usr/sbin in PATH for root.
 export PATH=$PATH:/sbin:/usr/sbin
 
