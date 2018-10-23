@@ -23,9 +23,6 @@ apt install --no-gui -y apt-transport-https \
             gpg \
       			software-properties-common \
             sudo \
-            fakeroot \
-            firmware-linux \
-            wpasupplicant \
             diffutils \
             bluez \
             dkms \
@@ -46,12 +43,10 @@ apt install --no-gui -y apt-transport-https \
             lzma \
             bzip2 \
             tar \
-
             nemo \
             baobab \
             sakura \
             dconf-editor \
-
             build-essential \
       			autotools-dev \
       			autoconf \
@@ -80,28 +75,23 @@ apt install --no-gui -y apt-transport-https \
             ruby \
             rake \
             php \
-
             libdvdcss2 \
       			libopencv-dev \
       			libgtkmm-3.0-dev \
       			libglibmm-2.4-dev \
             libmysql++-dev \
-
             virtualbox \
             virtualbox-dkms \
-
       			geogebra \
       			mathomatic \
       			wcalc \
             gnome-calculator \
-
             vlc \
             kdenlive \
             blender \
             gimp \
             inkscape \
             kazam \
-
             arduino \
       			scratch \
             squeak-plugins-scratch \
@@ -116,12 +106,10 @@ apt install --no-gui -y apt-transport-https \
             gedit \
             ghex \
             sqlitebrowser \
-
       			lynx \
             wget \
       			curl \
             filezilla \
-
       			wireshark-gtk \
             traceroute \
             whois \
@@ -130,7 +118,7 @@ apt install --no-gui -y apt-transport-https \
             iftop \
             nmap \
             speedometer \
-
+            speedtest-cli \
             htop \
             hardinfo \
             gparted \
@@ -145,7 +133,6 @@ apt install --no-gui -y apt-transport-https \
             gkrellm \
       			openssh-server \
             ntfs-3g \
-
             hexchat \
       			stellarium \
       			nexuiz \
