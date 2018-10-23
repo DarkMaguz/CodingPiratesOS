@@ -188,7 +188,7 @@ wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
 extraApps="\${extraApps} skypeforlinux"
 
-apt-update
+apt update
 apt install -y $extraApps
 
 # Add $stdUser to 'docker' group.
