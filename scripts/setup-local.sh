@@ -16,7 +16,7 @@ stdUser=pirat
 # Base System          #
 ########################
 
-apt install --no-gui -y apt-transport-https \
+apt install -y apt-transport-https \
       			dirmngr \
       			ca-certificates \
       			gnupg2 \
@@ -75,11 +75,10 @@ apt install --no-gui -y apt-transport-https \
             ruby \
             rake \
             php \
-            libdvdcss2 \
+            libdvd-pkg \
       			libopencv-dev \
       			libgtkmm-3.0-dev \
       			libglibmm-2.4-dev \
-            libmysql++-dev \
             virtualbox \
             virtualbox-dkms \
       			geogebra \
@@ -126,7 +125,6 @@ apt install --no-gui -y apt-transport-https \
             gdisk \
       			psensor \
             hddtemp \
-            sensord \
             lm-sensors \
             hplip \
             cpuid \
@@ -136,7 +134,6 @@ apt install --no-gui -y apt-transport-https \
             hexchat \
       			stellarium \
       			nexuiz \
-            steam \
             gnome-games
 
 
@@ -188,7 +185,7 @@ wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
 extraApps="\${extraApps} skypeforlinux"
 
-apt install -y --no-gui $extraApps
+apt install -y $extraApps
 
 # Add $stdUser to 'docker' group.
 usermod -aG docker $stdUser
