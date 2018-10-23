@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 #Bugfix for missing /sbin and /usr/sbin in PATH for root.
 export PATH=$PATH:/sbin:/usr/sbin
@@ -16,6 +16,8 @@ stdUser=pirat
 # Base System          #
 ########################
 
+apt update
+apt upgrade -y
 apt install -y apt-transport-https \
       			dirmngr \
       			ca-certificates \
@@ -185,6 +187,7 @@ wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
 extraApps="\${extraApps} skypeforlinux"
 
+apt-update
 apt install -y $extraApps
 
 # Add $stdUser to 'docker' group.
