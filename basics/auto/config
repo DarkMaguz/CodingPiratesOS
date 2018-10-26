@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+lb config noauto \
+    --mode debian \
+    --architectures amd64 \
+    --binary-images iso-hybrid \
+    --binary-filesystem fat32 \
+    --debian-installer false \
+    --distribution buster \
+    --mirror-bootstrap http://ftp.dk.debian.org/debian/ \
+    --mirror-binary http://ftp.dk.debian.org/debian/ \
+    --archive-areas "main contrib non-free" \
+    --apt-indices false \
+    --linux-packages "linux-image linux-headers" \
+    --memtest none \
+    --firmware-chroot true
+    "${@}"
