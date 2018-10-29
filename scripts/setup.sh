@@ -39,11 +39,11 @@ apt install -y \
 
 apt install -y \
             apt-transport-https \
-      			dirmngr \
-      			ca-certificates \
-      			gnupg2 \
+            dirmngr \
+            ca-certificates \
+            gnupg2 \
             gpg \
-      			software-properties-common \
+            software-properties-common \
             sudo \
             fakeroot \
             firmware-linux \
@@ -68,22 +68,22 @@ apt install -y \
             lzma \
             bzip2 \
             tar \
-
+\
             nemo \
             baobab \
             sakura \
             dconf-editor \
-
+\
             build-essential \
-      			autotools-dev \
-      			autoconf \
-      			automake \
-      			make \
-      			g++ \
+            autotools-dev \
+            autoconf \
+            automake \
+            make \
+            g++ \
             gpp \
             gcc \
-      			libtool \
-      			m4 \
+            libtool \
+            m4 \
             googletest \
             libgtest-dev \
             cmake \
@@ -102,34 +102,34 @@ apt install -y \
             ruby \
             rake \
             php \
-
+\
             libdvdcss2 \
-      			libopencv-dev \
-      			libgtkmm-3.0-dev \
-      			libglibmm-2.4-dev \
+            libopencv-dev \
+            libgtkmm-3.0-dev \
+            libglibmm-2.4-dev \
             libmysql++-dev \
-
+\
             virtualbox \
             virtualbox-dkms \
-
-      			geogebra \
-      			mathomatic \
-      			wcalc \
+\
+            geogebra \
+            mathomatic \
+            wcalc \
             gnome-calculator \
-
+\
             vlc \
             kdenlive \
             blender \
             gimp \
             inkscape \
             kazam \
-
+\
             arduino \
-      			scratch \
+            scratch \
             squeak-plugins-scratch \
             squeak-vm \
-      			fritzing \
-      			idle \
+            fritzing \
+            idle \
             vim \
             emacs \
             nano \
@@ -138,13 +138,13 @@ apt install -y \
             gedit \
             ghex \
             sqlitebrowser \
-
-      			lynx \
+\
+            lynx \
             wget \
-      			curl \
+            curl \
             filezilla \
-
-      			wireshark-gtk \
+\
+            wireshark-gtk \
             traceroute \
             whois \
             ufw \
@@ -152,25 +152,25 @@ apt install -y \
             iftop \
             nmap \
             speedometer \
-
+\
             htop \
             hardinfo \
             gparted \
             gpart \
             gdisk \
-      			psensor \
+            psensor \
             hddtemp \
             sensord \
             lm-sensors \
             hplip \
             cpuid \
             gkrellm \
-      			openssh-server \
+            openssh-server \
             ntfs-3g \
-
+\
             hexchat \
-      			stellarium \
-      			nexuiz \
+            stellarium \
+            nexuiz \
             gnome-games
 
 
