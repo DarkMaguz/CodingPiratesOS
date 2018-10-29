@@ -1,15 +1,22 @@
-#!/bin/sh
-exit
-#https://live-team.pages.debian.net/live-manual/html/live-manual/the-basics.en.html
-#https://www.youtube.com/watch?v=gibZpx9_dfU
+#!/bin/sh -e
+
+########################
+# Config               #
+########################
+
+# Name the default user.
+stdUser=""
+
+if [ -z "$stdUser" ]; then
+  echo "Please configure this script before running it."
+  exit
+fi
+
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
         echo "Please run as root"
         exit
 fi
-
-# Name the default user.
-stdUser=pirat
 
 ########################
 # Base System          #
@@ -23,13 +30,15 @@ deb http://security.debian.org/debian-security buster/updates main contrib
 deb-src http://security.debian.org/debian-security buster/updates main contrib'> /etc/apt/sources.list
 
 apt update -y
-apt upgrade --no-gui -y
+apt upgrade -y
 
-apt install --no-gui -y task-cinnamon-desktop \
+apt install -y \
+            task-cinnamon-desktop \
             task-danish \
             task-laptop
 
-apt install --no-gui -y apt-transport-https \
+apt install -y \
+            apt-transport-https \
       			dirmngr \
       			ca-certificates \
       			gnupg2 \
@@ -162,7 +171,6 @@ apt install --no-gui -y apt-transport-https \
             hexchat \
       			stellarium \
       			nexuiz \
-            steam \
             gnome-games
 
 
@@ -187,34 +195,34 @@ extraApps=""
 wget -qO - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
 #echo deb http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
 echo deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
-extraApps="\${extraApps} google-chrome-stable"
+extraApps=${extraApps} google-chrome-stable
 
 # MonoDevelop
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo deb https://download.mono-project.com/repo/debian vs-stretch main> /etc/apt/sources.list.d/mono-official-vs.list
-extraApps="\${extraApps} mono-devel mono-complete mono-dbg monodevelop"
+extraApps=${extraApps} mono-devel mono-complete mono-dbg monodevelop
 
 # Spotify
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 echo deb http://repository.spotify.com stable non-free> /etc/apt/sources.list.d/spotify.list
-extraApps="\${extraApps} spotify-client"
+extraApps=${extraApps} spotify-client
 
 # Docker
 wget -qO - https://download.docker.com/linux/debian/gpg | apt-key add -
 echo deb [arch=amd64] https://download.docker.com/linux/debian buster stable> /etc/apt/sources.list.d/docker.list
-extraApps="\${extraApps} docker-ce"
+extraApps=${extraApps} docker-ce
 
 # Sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
 echo deb https://download.sublimetext.com/ apt/stable/> /etc/apt/sources.list.d/sublime-text.list
-extraApps="\${extraApps} sublime-text"
+extraApps=${extraApps} sublime-text
 
 # Skype
 wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
-extraApps="\${extraApps} skypeforlinux"
+extraApps=${extraApps} skypeforlinux
 
-apt install -y --no-gui $extraApps
+apt install -y $extraApps
 
 # Add $stdUser to 'docker' group.
 usermod -aG docker $stdUser
@@ -232,13 +240,30 @@ ln -s $FF_PATH/firefox/browser/chrome/icons/default/default128.png /usr/share/ic
 # Install Oracle Java JRE.
 sh update_java.sh
 
+# Install graphics drivers.
+
 if [ ! -z "$(lspci | grep NVIDIA)" ]; then
-        sudo apt install -y --no-gui nvidia-driver nvidia-kernel-dkms
+        sudo apt install -y nvidia-driver nvidia-kernel-dkms
 fi
 
 if [ ! -z "$(lspci | grep AMD/ATI)" ]; then
-        sudo apt install -y --no-gui firmware-amd-graphics
+        sudo apt install -y firmware-amd-graphics
 fi
+
+# Install Steam.
+
+dpkg --add-architecture i386
+apt update -y
+apt install -y steam:i386
+
+
+########################
+# Clean up             #
+########################
+
+apt autoremove -y
+apt clean
+apt autoclean
 
 #aptitude install nvidia-driver
 
