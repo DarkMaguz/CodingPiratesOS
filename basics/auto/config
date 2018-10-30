@@ -2,18 +2,35 @@
 
 set -e
 
+CP_USERNAME=pirat
+CP_HOSTNAME=codingpirates
+
 lb config noauto \
-    --mode debian \
-    --architectures amd64 \
-    --binary-images iso-hybrid \
-    --binary-filesystem fat32 \
-    --debian-installer false \
-    --distribution buster \
-    --mirror-bootstrap http://ftp.dk.debian.org/debian/ \
-    --mirror-binary http://ftp.dk.debian.org/debian/ \
-    --archive-areas "main contrib non-free" \
-    --apt-indices false \
-    --linux-packages "linux-image linux-headers" \
-    --memtest none \
-    --firmware-chroot true
-    "${@}"
+          --apt apt \
+          --apt-indices true \
+          --apt-recommends true \
+          --architectures amd64 \
+          --binary-images iso-hybrid \
+          --binary-filesystem fat32 \
+          --bootappend-live "boot=live components autologin quiet noeject username=${CP_USERNAME} hostname=${CP_HOSTNAME}" \
+          --cache true \
+          --checksums none \
+          --compression none \
+          --debian-installer false \
+          --debian-installer-gui false \
+          --debug \
+          --distribution buster \
+          --iso-application "CodingPiratesOS Live" \
+          --iso-preparer "magnus@darkmagus.dk" \
+          --iso-publisher "magnus@darkmagus.dk" \
+          --iso-volume "CodingPiratesOS-live-amd64" \
+          --linux-packages "linux-image linux-headers" \
+          --memtest none \
+          --mirror-bootstrap http://ftp.dk.debian.org/debian/ \
+          --mirror-binary http://ftp.dk.debian.org/debian/ \
+          --mode debian \
+          --archive-areas "main contrib non-free" \
+          --firmware-chroot true
+          "${@}"
+
+#nouveau.modeset=0

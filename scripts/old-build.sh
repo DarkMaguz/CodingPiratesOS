@@ -47,7 +47,7 @@ lb config --apt-indices false \
           --iso-application "CodingPiratesOS Live 1.1" \
           --iso-preparer magnus@darkmagus.dk \
           --iso-publisher magnus@darkmagus.dk \
-          --iso-volume "CodingPiratesOS Live" \
+          --iso-volume "CodingPiratesOS-live-amd64" \
           --linux-flavours amd64 \
           --linux-packages "linux-image linux-headers" \
           --memtest memtest86+ \
