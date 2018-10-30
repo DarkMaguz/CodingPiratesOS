@@ -11,8 +11,8 @@ fi
 
 if [ ! -d $JWM_PATH ]; then
 	echo "The directory does not exist: $JWM_PATH"
-	echo "Terminating..."
-	exit
+	echo "Creating new JWM directory..."
+	mkdir -p $JWM_PATH
 fi
 
 cd $JWM_PATH
