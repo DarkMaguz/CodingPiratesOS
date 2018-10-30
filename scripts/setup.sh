@@ -4,6 +4,11 @@
 # Config               #
 ########################
 
+# Bugfix for handling $PATH where root user is missing the sbin directories.
+if [ -z $(echo $PATH | grep sbin) ]; then
+  export PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
+fi
+
 # Name the default user.
 stdUser=""
 
@@ -17,6 +22,7 @@ if [ $(id -u) != 0 ]; then
         echo "Please run as root"
         exit
 fi
+
 
 ########################
 # Base System          #
