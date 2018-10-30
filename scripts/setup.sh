@@ -106,8 +106,7 @@ apt install -y \
             libdvdcss2 \
             libopencv-dev \
             libgtkmm-3.0-dev \
-            libglibmm-2.4-dev \
-            libmysql++-dev \
+            libglibmm-2.4-dev \\
 \
             virtualbox \
             virtualbox-dkms \
@@ -152,6 +151,7 @@ apt install -y \
             iftop \
             nmap \
             speedometer \
+            speedtest-cli \
 \
             htop \
             hardinfo \
@@ -160,7 +160,6 @@ apt install -y \
             gdisk \
             psensor \
             hddtemp \
-            sensord \
             lm-sensors \
             hplip \
             cpuid \
@@ -173,18 +172,8 @@ apt install -y \
             nexuiz \
             gnome-games
 
-
-# Setup sudoers.
-#echo "$stdUser    ALL=(ALL:ALL)NOPASSWD: ALL"> /etc/sudoers.d/$stdUser
-#adduser $stdUser sudo
-usermod -aG sudo $stdUser
-
-# Setup Uncomplicated Firewall (ufw).
-ufw enable
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow ssh
-ufw reload
+# Fix bug with borken packages libdvdcss2 and libdvd-pkg.
+sudo dpkg-reconfigure libdvd-pkg
 
 ########################
 # Extra Applications   #
@@ -195,53 +184,42 @@ extraApps=""
 wget -qO - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
 #echo deb http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
 echo deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
-extraApps=${extraApps} google-chrome-stable
+extraApps="${extraApps} google-chrome-stable"
 
 # MonoDevelop
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo deb https://download.mono-project.com/repo/debian vs-stretch main> /etc/apt/sources.list.d/mono-official-vs.list
-extraApps=${extraApps} mono-devel mono-complete mono-dbg monodevelop
+extraApps="${extraApps} mono-devel mono-complete mono-dbg monodevelop"
 
 # Spotify
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 echo deb http://repository.spotify.com stable non-free> /etc/apt/sources.list.d/spotify.list
-extraApps=${extraApps} spotify-client
+extraApps="${extraApps} spotify-client"
 
 # Docker
 wget -qO - https://download.docker.com/linux/debian/gpg | apt-key add -
 echo deb [arch=amd64] https://download.docker.com/linux/debian buster stable> /etc/apt/sources.list.d/docker.list
-extraApps=${extraApps} docker-ce
+extraApps="${extraApps} docker-ce"
 
 # Sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
 echo deb https://download.sublimetext.com/ apt/stable/> /etc/apt/sources.list.d/sublime-text.list
-extraApps=${extraApps} sublime-text
+extraApps="${extraApps} sublime-text"
 
 # Skype
 wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
-extraApps=${extraApps} skypeforlinux
+extraApps="${extraApps} skypeforlinux"
 
 apt install -y $extraApps
 
-# Add $stdUser to 'docker' group.
-usermod -aG docker $stdUser
-
 # Install Firefox.
 sh update_firefox.sh
-cp ../data/Firefox.desktop /usr/share/applications/Firefox.desktop
-FF_PATH=/opt/Mozilla
-ln -s $FF_PATH/firefox/browser/chrome/icons/default/default16.png /usr/share/icons/hicolor/16x16/apps/firefox.png
-ln -s $FF_PATH/firefox/browser/chrome/icons/default/default32.png /usr/share/icons/hicolor/32x32/apps/firefox.png
-ln -s $FF_PATH/firefox/browser/chrome/icons/default/default48.png /usr/share/icons/hicolor/48x48/apps/firefox.png
-ln -s $FF_PATH/firefox/browser/chrome/icons/default/default64.png /usr/share/icons/hicolor/64x64/apps/firefox.png
-ln -s $FF_PATH/firefox/browser/chrome/icons/default/default128.png /usr/share/icons/hicolor/128x128/apps/firefox.png
 
 # Install Oracle Java JRE.
 sh update_java.sh
 
 # Install graphics drivers.
-
 if [ ! -z "$(lspci | grep NVIDIA)" ]; then
         sudo apt install -y nvidia-driver nvidia-kernel-dkms
 fi
@@ -251,21 +229,32 @@ if [ ! -z "$(lspci | grep AMD/ATI)" ]; then
 fi
 
 # Install Steam.
-
 dpkg --add-architecture i386
 apt update -y
 apt install -y steam:i386
 
+########################
+# Setup                #
+########################
+# Setup sudoers.
+usermod -aG sudo $stdUser
+
+# Add $stdUser to 'docker' group.
+usermod -aG docker $stdUser
+
+# Setup Uncomplicated Firewall (ufw).
+ufw enable
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw reload
 
 ########################
 # Clean up             #
 ########################
-
 apt autoremove -y
 apt clean
 apt autoclean
-
-#aptitude install nvidia-driver
 
 #apt-get install --no-install-recommends gnome-panel
 #gnome-desktop-item-edit --create-new /home/magnus/.local/share/applications/
