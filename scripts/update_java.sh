@@ -17,8 +17,11 @@ fi
 
 cd $JWM_PATH
 
-apt update -y
-apt install -y libxml2-utils
+dpkg-query -s libxml2-utils > /dev/null 2>&1
+if [ ! $? ]; then
+	apt update -y
+	apt install -y libxml2-utils
+fi
 
 DL_LINK=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div[2]/div[1]/div/table[2]/tbody/tr[5]/td[2]/a/@href)' - 2> /dev/null)
 HTML_DATA=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div/div/div/h4[@class="sub"])' - 2> /dev/null)
