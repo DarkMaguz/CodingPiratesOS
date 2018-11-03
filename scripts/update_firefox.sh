@@ -6,12 +6,17 @@ if [ $(id -u) != 0 ]; then
         exit
 fi
 
-# Load Gnome desktop entry.
-DESKTOP_ENTRY="$(cat ../data/Firefox.desktop)"
-
 # Install path for firefox.
 FF_PATH=/opt/Mozilla
 FF_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=da"
+
+# Load Gnome desktop entry.
+DESKTOP_ENTRY="$(cat ../data/Firefox.desktop)"
+
+# List of dependencies to be installed.
+DEPEND_PKGS="wget libxml2-utils tar coreutils grep"
+# Check for dependencies.
+install_depends $DEPEND_PKGS
 
 # Make install path if it is missing.
 if [ ! -d "$FF_PATH" ]; then
