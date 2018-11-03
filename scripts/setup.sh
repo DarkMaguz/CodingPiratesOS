@@ -112,7 +112,7 @@ apt install -y \
             libdvdcss2 \
             libopencv-dev \
             libgtkmm-3.0-dev \
-            libglibmm-2.4-dev \\
+            libglibmm-2.4-dev \
 \
             virtualbox \
             virtualbox-dkms \
@@ -188,7 +188,6 @@ extraApps=""
 
 # Google Chrome.
 wget -qO - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-#echo deb http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
 echo deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main> /etc/apt/sources.list.d/google-chrome.list
 extraApps="${extraApps} google-chrome-stable"
 
@@ -217,6 +216,12 @@ wget -qO - https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
 echo deb [arch=amd64] https://repo.skype.com/deb stable main> /etc/apt/sources.list.d/skype-stable.list
 extraApps="${extraApps} skypeforlinux"
 
+# Node.js
+wget -qO - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+echo "deb https://deb.nodesource.com/node_11.x buster main"> /etc/apt/sources.list.d/nodesource.list
+echo "deb-src https://deb.nodesource.com/node_11.x$VERSION buster main">> /etc/apt/sources.list.d/nodesource.list
+extraApps="${extraApps} nodejs"
+
 apt update -y
 apt install -y $extraApps
 
@@ -225,6 +230,9 @@ sh update_firefox.sh
 
 # Install Oracle Java JRE.
 sh update_java.sh
+
+# Install Unity.
+sh update_unity.sh
 
 # Install graphics drivers.
 if [ ! -z "$(lspci | grep NVIDIA)" ]; then
