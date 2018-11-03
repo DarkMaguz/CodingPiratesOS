@@ -9,12 +9,12 @@ install_depends() {
   local dependencies="$1"
   local missing=""
   echo "Checking for $(echo "$dependencies" | wc -w) dependencies."
+
   # Check for missing dependencies.
-  date +%s:%N
   for pkg in $dependencies; do
     dpkg-query -s $pkg:$ARCHITECTURE > /dev/null 2>&1 || missing="$missing $pkg"
   done
-  date +%s:%N
+
   # Install missing packages, if any.
   if [ ! -z "$missing" ]; then
     echo "Found $(echo "$missing" | wc -w) missing packages."
