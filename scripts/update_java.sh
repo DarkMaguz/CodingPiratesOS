@@ -1,7 +1,11 @@
 #!/bin/sh -e
 
+# Import functions.
+. $PWD/functions.sh
+
 JWM_PATH=/usr/lib/jvm
 DEFAULT_PATH=/usr/lib/jvm/default-java
+DEPEND_PKGS="wget libxml2-utils tar coreutils"
 
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
@@ -17,11 +21,8 @@ fi
 
 cd $JWM_PATH
 
-dpkg-query -s libxml2-utils > /dev/null 2>&1
-if [ ! $? ]; then
-	apt update -y
-	apt install -y libxml2-utils
-fi
+# Check for dependencies.
+install_depends $DEPEND_PKGS
 
 DL_LINK=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div[2]/div[1]/div/table[2]/tbody/tr[5]/td[2]/a/@href)' - 2> /dev/null)
 HTML_DATA=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div/div/div/h4[@class="sub"])' - 2> /dev/null)
