@@ -16,7 +16,7 @@ lb config noauto \
           --cache true \
           --checksums none \
           --compression none \
-          --debian-installer false \
+          --debian-installer live \
           --debian-installer-gui false \
           --debug \
           --distribution buster \
