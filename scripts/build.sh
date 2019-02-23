@@ -2,6 +2,16 @@
 
 cd ..
 
+if [ ! -d images/ ]; then
+	mkdir -p images/
+fi
+
+if [ ! -d build/ ]; then
+	mkdir -p build/
+#else
+#	sudo lb clean --all
+fi
+
 cp -r -u basics/* build/
 cd build
 
