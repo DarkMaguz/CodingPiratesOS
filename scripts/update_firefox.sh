@@ -6,6 +6,8 @@ if [ $(id -u) != 0 ]; then
         exit
 fi
 
+. $PWD/functions.sh
+
 # Install path for firefox.
 FF_PATH=/opt/Mozilla
 FF_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=da"
