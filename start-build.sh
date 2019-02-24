@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Ensure that we have superpowers.
+if [ $(id -u) != 0 ]; then
+        echo "Please run as root"
+        exit
+fi
+
 docker rm -f CodingPiratesOS
 set -e
 docker build -t darkmagus/codingpiratesos .
