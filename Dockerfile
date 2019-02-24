@@ -3,7 +3,7 @@ FROM debian:buster
 
 # Getting the prerequisite packages.
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y live-build
+RUN apt-get install -y live-build debian-cd
 
 # Make the base directory for our application.
 RUN mkdir /usr/app
