@@ -1,19 +1,21 @@
 #!/bin/sh -e
 
+DIR=$(dirname `realpath $0`)
+
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
         echo "Please run as root"
         exit
 fi
 
-. $PWD/functions.sh
+. $DIR/functions.sh
 
 # Install path for firefox.
 FF_PATH=/opt/Mozilla
 FF_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=da"
 
 # Load Gnome desktop entry.
-DESKTOP_ENTRY="$(cat ../data/Firefox.desktop)"
+DESKTOP_ENTRY="$(cat $DIR/../data/Firefox.desktop)"
 
 # List of dependencies to be installed.
 DEPEND_PKGS="wget libxml2-utils tar coreutils grep"
