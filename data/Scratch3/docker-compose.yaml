@@ -1,0 +1,13 @@
+version: "2"
+services:
+  node:
+    image: "node:10-alpine"
+    user: "node"
+    working_dir: /usr/app/Scratch3/scratch-gui
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - "8081"
+    command: "npm start"

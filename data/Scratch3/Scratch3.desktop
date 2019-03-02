@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Scratch 3
+Comment=Scratch 3 offline edition
+GenericName=Scratch 3 editor
+X-GNOME-FullName=Scratch 3
+Exec=/opt/Scratch3/run.sh
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=scratch3
+Categories=programming;development;kids;
