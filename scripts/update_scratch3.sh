@@ -27,14 +27,14 @@ fi
 SPLASH_SCREEN_STATE=none
 if [ ! -d "$INSTALL_PATH/Scratch3-splash" ]; then
   git clone https://github.com/DarkMaguz/Scratch3-splash.git $INSTALL_PATH/Scratch3-splash
-  BUILD_SPLASH_SCREEN=cloned
+  SPLASH_SCREEN_STATE=cloned
 else
   git -C $INSTALL_PATH/Scratch3-splash remote update &> /dev/null
   GIT_STATUS=`git -C $INSTALL_PATH/Scratch3-splash status`
   if [ ! "$GIT_STATUS" =~ "Your branch is up-to-date" ]; then
     make -C $INSTALL_PATH/Scratch3-splash uninstall
     git -C $INSTALL_PATH/Scratch3-splash pull --all &> /dev/null
-    BUILD_SPLASH_SCREEN=pulled
+    SPLASH_SCREEN_STATE=pulled
   fi
 fi
 
