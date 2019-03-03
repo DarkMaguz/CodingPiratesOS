@@ -31,7 +31,8 @@ if [ ! -d "$INSTALL_PATH/Scratch3-splash" ]; then
 else
   git -C $INSTALL_PATH/Scratch3-splash remote update &> /dev/null
   GIT_STATUS=`git -C $INSTALL_PATH/Scratch3-splash status`
-  if [ ! "$GIT_STATUS" =~ "Your branch is up-to-date" ]; then
+  SEARCH_STRING="Your branch is up-to-date"
+  if [ ! "${GIT_STATUS#*$SEARCH_STRING}" != "$GIT_STATUS" ]; then
     make -C $INSTALL_PATH/Scratch3-splash uninstall
     git -C $INSTALL_PATH/Scratch3-splash pull --all &> /dev/null
     SPLASH_SCREEN_STATE=pulled
