@@ -1,7 +1,9 @@
 #!/bin/sh -e
 
+DIR=$(dirname `realpath $0`)
+
 # Import functions.
-. $PWD/functions.sh
+. $DIR/functions.sh
 
 # Unity versioning has the apparent form of major.minor.update.patch
 # where:
@@ -14,7 +16,7 @@
 # This should change in the future.
 
 # Install path for Unity.
-UNITY_PATH=/opt/unity
+UNITY_PATH=/opt/Unity
 
 DEPEND_PKGS="curl wget libxml2-utils coreutils gconf-service lib32gcc1 lib32stdc++6 libasound2 libc6 libc6-i386 libcairo2 libcap2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libfreetype6 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libgl1-mesa-glx libglib2.0-0 libglu1-mesa libgtk2.0-0 libnspr4 libnss3 libpango1.0-0 libstdc++6 libx11-6 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxtst6 zlib1g debconf npm"
 
@@ -98,3 +100,6 @@ if [ $UPDATE ]; then
 
   echo "y\n" | ./$INSTALLER_FILE -u -l $UNITY_PATH
 fi
+
+# Add Gnome desktop entry.
+cp $DIR/../data/Unity.desktop /usr/share/applications/Unity.desktop
