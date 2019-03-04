@@ -18,8 +18,13 @@ if [ ! -d build/ ]; then
 #	sudo lb clean --all
 fi
 
+# Copy config files to build dir.
 cp -r -u basics/* build/
+
 cd build
+
+# Fix bug missing debian-cd pakage.
+ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
 
 lb clean
 lb build
@@ -31,9 +36,12 @@ if [ ! -e live-image-amd64.hybrid.iso ]; then
   exit
 fi
 
-read line <../build-version.txt
+if [ ! -f ../data/build-version.txt ]; then
+	echo 1000 >../data/build-version.txt
+fi
+
+read line <../data/build-version.txt
 build_version=$(($line+1))
-#build_version=$(($build_version+1))
 
 #sudo chown magnus:magnus live-image-amd64.hybrid.iso
 mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid.iso"
@@ -41,4 +49,5 @@ mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid
 #sudo chown magnus:magnus build.log
 cp build.log "../images/live-image-amd64-$build_version.build.log"
 
-echo $build_version> ../build-version.txt
+echo $build_version> ../data/build-version.txt
+
