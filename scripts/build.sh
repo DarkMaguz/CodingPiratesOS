@@ -14,8 +14,9 @@ fi
 
 if [ ! -d build/ ]; then
 	mkdir -p build/
-#else
-#	sudo lb clean --all
+else
+	rm -rf build/*
+	rm -rf build/.build
 fi
 
 
@@ -30,7 +31,7 @@ cp -r -u basics/* build/
 
 cd build
 
-lb clean
+lb clean --all
 lb build
 
 if [ ! -e live-image-amd64.hybrid.iso ]; then
