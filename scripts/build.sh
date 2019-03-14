@@ -18,13 +18,17 @@ if [ ! -d build/ ]; then
 #	sudo lb clean --all
 fi
 
+
+# Fix bug missing debian-cd pakage.
+ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
+
+# Fix bug in debootstrap, when mounting /proc in docker.
+patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.patch
+
 # Copy config files to build dir.
 cp -r -u basics/* build/
 
 cd build
-
-# Fix bug missing debian-cd pakage.
-ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
 
 lb clean
 lb build
@@ -50,4 +54,3 @@ mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid
 cp build.log "../images/live-image-amd64-$build_version.build.log"
 
 echo $build_version> ../data/build-version.txt
-
