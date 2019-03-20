@@ -10,7 +10,7 @@ lb config noauto \
           --architectures amd64 \
           --binary-images iso-hybrid \
           --binary-filesystem fat32 \
-          --bootappend-live "boot=live components autologin quiet noeject username=${CP_USERNAME} hostname=${CP_HOSTNAME}" \
+          --bootappend-live "boot=live components autologin quiet noeject username=${CP_USERNAME} hostname=${CP_HOSTNAME} locales=da_DK.UTF-8 keyboard-layouts=dk" \
           --cache true \
           --checksums none \
           --compression none \
@@ -28,7 +28,7 @@ lb config noauto \
           --mirror-binary http://ftp.dk.debian.org/debian/ \
           --mode debian \
           --security true \
-          --win32-loader false \
+          --win32-loader true \
           --archive-areas "main contrib non-free" \
           --firmware-chroot true \
           ${@}
