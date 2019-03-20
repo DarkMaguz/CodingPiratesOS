@@ -22,7 +22,7 @@ INSTALL_PATH=/opt/Arduino
 ARDUINO_URL="https://www.arduino.cc/en/Main/Software"
 
 # List of dependencies to be installed.
-DEPEND_PKGS="librxtx-java libjna-java xmllint wget xdg-utils"
+DEPEND_PKGS="librxtx-java libjna-java libxml2-utils wget xdg-utils"
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 
