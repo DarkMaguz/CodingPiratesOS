@@ -1,6 +1,8 @@
 # CodingPiratesOS
 This is a re-spin of the Debian Linux distribution suited for the needs of the Coding Pirates organization.
 
+Latest builds can be found at: [www.darkmagus.dk/cpos](https://www.darkmagus.dk/cpos)
+
 **TODO**
 1) - [x] Create a script for setting up our in house laptops.
 2) - [x] Create a basic live boot iso.
