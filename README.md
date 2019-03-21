@@ -9,17 +9,18 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
 3. - [x] Customize boot splash screen
 4. - [x] Set up CI server
 5. - [ ] Customize desktop
-6. - [ ] Implement install/update scripts for
+6. - [ ] Add boot menu option for persistence
+7. - [ ] Implement install/update scripts for
     * - [ ] Unity
     * - [ ] Scratch3
     * - [ ] Arduino
     * - [ ] Firefox
     * - [ ] Oracle Java JRE
     * - [ ] Atom
-7) - [ ] Make documentation
-8) - [ ] Create multiple builds
+8. - [ ] Make documentation
+9. - [ ] Create multiple builds
     * - [x] 64 bit Cinnamon Heavy
-    * - [ ] 32 bit Cinnamon Heavy
+    * - [ ] ~32 bit Cinnamon Heavy~
     * - [ ] 64 bit Cinnamon Light
     * - [ ] 32 bit Cinnamon Light
 
