@@ -1,13 +1,13 @@
 # CodingPiratesOS
 This is a re-spin of the Debian Linux distribution suited for the needs of the Coding Pirates organization.
 
-Latest builds can be found at: [www.darkmagus.dk/cpos](https://www.darkmagus.dk/cpos)
+Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos)
 
 **TODO**
 1) - [x] Create a script for setting up our in house laptops.
 2) - [x] Create a basic live boot iso.
 3) - [x] Customize boot splash screen.
-4) - [ ] Set up CI server.
+4) - [x] Set up CI server.
 5) - [ ] Customize desktop.
 6) - [ ] Implement install/update scripts for.
 - 1) - [ ] Unity.
