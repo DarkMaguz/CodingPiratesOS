@@ -1,0 +1,11 @@
+--- /usr/share/debootstrap/scripts/debian-common	2018-11-20 19:55:53.000000000 +0100
++++ /usr/app/data/patch/debian-common	2019-03-14 15:30:08.648955989 +0100
+@@ -101,7 +101,7 @@
+ 		baseprog="$(($baseprog + ${1:-1}))"
+ 	}
+
+-	if ! doing_variant fakechroot; then
++	if ! doing_variant fakechroot && [ "$CONTAINER" != "docker" ]; then
+ 		setup_proc
+ 		in_target /sbin/ldconfig
+ 	fi
