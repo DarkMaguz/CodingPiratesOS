@@ -44,7 +44,7 @@ if [ ! -f ../data/build-version.txt ]; then
 	echo 1000 >../data/build-version.txt
 fi
 
-read line <../VERSION
+read line <../data/VERSION
 MAJOR=$(echo $line | cut -d "." -f1)
 MINOR=$(echo $line | cut -d "." -f2)
 BUILD=$(echo $line | cut -d "." -f3)
@@ -56,4 +56,4 @@ mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid
 #sudo chown magnus:magnus build.log
 cp build.log "../images/live-image-amd64-$build_version.build.log"
 
-echo $build_version> ../VERSION
+echo $build_version >../data/VERSION
