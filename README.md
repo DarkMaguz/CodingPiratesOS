@@ -11,15 +11,16 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
 5. - [x] Adapt versioning system
 6. - [ ] Customize desktop
 7. - [x] Add boot menu option for persistence
-8. - [ ] Implement install/update scripts for
+8. - [ ] Create a script/program that automates the making of a persistent USB flash drive
+9. - [ ] Implement install/update scripts for
     * - [ ] Unity
     * - [ ] Scratch3
     * - [ ] Arduino
     * - [ ] Firefox
     * - [ ] Oracle Java JRE
     * - [ ] Atom
-9. - [ ] Make documentation
-10. - [ ] Create multiple builds
+10. - [ ] Make documentation
+11. - [ ] Create multiple builds
     * - [x] 64 bit Cinnamon Heavy
     * - [ ] ~32 bit Cinnamon Heavy~
     * - [ ] 64 bit Cinnamon Light
