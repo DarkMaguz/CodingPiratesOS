@@ -8,9 +8,9 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
 2. - [x] Create a basic live boot iso
 3. - [x] Customize boot splash screen
 4. - [x] Set up CI server
-5. - [ ] Adapt versioning system
+5. - [x] Adapt versioning system
 6. - [ ] Customize desktop
-7. - [ ] Add boot menu option for persistence
+7. - [x] Add boot menu option for persistence
 8. - [ ] Implement install/update scripts for
     * - [ ] Unity
     * - [ ] Scratch3
@@ -24,6 +24,15 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
     * - [ ] ~32 bit Cinnamon Heavy~
     * - [ ] 64 bit Cinnamon Light
     * - [ ] 32 bit Cinnamon Light
+
+---
+
+Update: 31st March 2019 <br>
+>It's now possible to use a persistence partition on the USB flash drive.
+In order to use this feature it's necessary to have a file named "persistence.conf"
+in the root of the file-system that has a volume label named "persistence".
+A directory and it's sub dirs can be made persistent by adding a
+path to that directory in the "persistence.conf" file i.e. '/home'.
 
 ---
 
