@@ -234,12 +234,17 @@ sh update_unity.sh
 
 # Install graphics drivers.
 if [ ! -z "$(lspci | grep NVIDIA)" ]; then
-        sudo apt install -y nvidia-driver nvidia-kernel-dkms
+  sudo apt install -y nvidia-driver nvidia-kernel-dkms
 fi
 
 if [ ! -z "$(lspci | grep AMD/ATI)" ]; then
-        sudo apt install -y firmware-amd-graphics
+  sudo apt install -y firmware-amd-graphics
 fi
+
+if [ ! -z "$(lspci | grep Intel | grep 'Wireless\|Advanced-N\|Ultimate-N\|WiFi')" ]; then
+  apt install -y firmware-iwlwifi
+fi
+
 
 # Install Steam.
 dpkg --add-architecture i386
