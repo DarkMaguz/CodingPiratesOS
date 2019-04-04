@@ -23,7 +23,6 @@ if [ $(id -u) != 0 ]; then
         exit
 fi
 
-
 ########################
 # Base System          #
 ########################
@@ -131,7 +130,6 @@ apt install -y \
 \
             arduino \
             scratch \
-            squeak-plugins-scratch \
             squeak-vm \
             fritzing \
             idle \
