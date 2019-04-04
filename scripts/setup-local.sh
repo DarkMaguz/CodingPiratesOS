@@ -19,7 +19,7 @@ stdUser=pirat
 
 apt update
 apt upgrade -y
-apt install -y apt-transport-https \
+apt install --dry-run -y apt-transport-https \
       			dirmngr \
       			ca-certificates \
       			gnupg2 \
@@ -96,7 +96,6 @@ apt install -y apt-transport-https \
             kazam \
             arduino \
       			scratch \
-            squeak-plugins-scratch \
             squeak-vm \
       			fritzing \
       			idle \
