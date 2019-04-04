@@ -108,7 +108,7 @@ apt install -y \
             rake \
             php \
 \
-            libdvdcss2 \
+            libdvd-pkg \
             libopencv-dev \
             libgtkmm-3.0-dev \
             libglibmm-2.4-dev \
