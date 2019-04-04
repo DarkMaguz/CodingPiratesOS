@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+# Ensure that we have superpowers.
+if [ $(id -u) != 0 ]; then
+        echo "Please run as root"
+        exit
+fi
+
 ########################
 # Config               #
 ########################
@@ -15,12 +21,6 @@ stdUser=""
 if [ -z "$stdUser" ]; then
   echo "Please configure this script before running it."
   exit
-fi
-
-# Ensure that we have superpowers.
-if [ $(id -u) != 0 ]; then
-        echo "Please run as root"
-        exit
 fi
 
 ########################
