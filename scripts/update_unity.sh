@@ -55,8 +55,8 @@ done
 echo $UNITY_DL_PAGE_URL
 
 # Get latest version available.
-HEADLINE=$(wget -q -O - $UNITY_DL_PAGE_URL | xmllint --html --xpath 'string(/html/body/h2)' -)
-LATEST_VERSION=$(echo $HEADLINE | cut -d' ' -f2)
+HEADLINE=$(wget -q -O - $UNITY_DL_PAGE_URL | xmllint --html --xpath 'string(//*[@id="content-wrapper"]/div/div[2]/div[1]/div/div[2]/div[1]/h2)' -)
+LATEST_VERSION=$(echo $HEADLINE | cut -d' ' -f3)
 if [ -z $LATEST_VERSION ]; then
   echo "Failed to get the latest version of Unity!"
   echo "Terminating..."
