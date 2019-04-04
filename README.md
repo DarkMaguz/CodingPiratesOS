@@ -20,7 +20,8 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
     * - [ ] Oracle Java JRE
     * - [ ] Atom
 10. - [ ] Make documentation
-11. - [ ] Create multiple builds
+11. - [ ] Find cloud data storage solution for members
+12. - [ ] Create multiple builds
     * - [x] 64 bit Cinnamon Heavy
     * - [ ] ~32 bit Cinnamon Heavy~
     * - [ ] 64 bit Cinnamon Light
