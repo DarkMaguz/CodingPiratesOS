@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+# This has not been tested properly yet!
+exit
+
 DIR=$(dirname `realpath $0`)
 
 # Ensure that we have superpowers.
@@ -14,7 +17,8 @@ fi
 INSTALL_PATH=/opt/Scratch3
 
 # List of dependencies to be installed.
-DEPEND_PKGS="libgtkmm-3.0-dev autotools-dev libboost-system-dev libboost-thread-dev google-chrome docker git"
+DEPEND_PKGS="libgtkmm-3.0-dev autotools-dev libboost-system-dev libboost-thread-dev google-chrome docker-ce git xdg-utils"
+
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 
@@ -45,11 +49,15 @@ if [ "$SPLASH_SCREEN_STATE" != "none" ]; then
   autoreconf -i
   ./configure --prefix /usr
   make && make install
+  make clean
 fi
 
-# Add Gnome desktop entry.
-cp $DIR/../data/Scratch3/Scratch3.desktop /usr/share/applications/Scratch3.desktop
+# If we have cloned...
+if [ "$SPLASH_SCREEN_STATE" == "cloned" ]; then
+  # Add Gnome desktop entry.
+  xdg-desktop-menu install --novendor $DIR/../data/Scratch3/Scratch3.desktop
 
-# Install scratch3.sh.
-cp $DIR/../data/Scratch3/scratch3.sh $INSTALL_PATH/scratch3.sh
-ln -s $INSTALL_PATH/scratch3.sh /usr/bin/scratch3
+  # Install scratch3.sh.
+  cp $DIR/../data/Scratch3/scratch3.sh $INSTALL_PATH/scratch3.sh
+  ln -s $INSTALL_PATH/scratch3.sh /usr/bin/scratch3
+fi
