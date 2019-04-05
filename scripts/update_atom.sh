@@ -1,8 +1,5 @@
 #!/bin/sh -e
 
-# This has not been tested properly yet!
-#exit
-
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
   echo "Please run as root"
@@ -31,6 +28,7 @@ fi
 
 # Get the latest version available.
 LATEST_VERSION=$(wget -q -O - https://atom.io | xmllint --html --xpath 'string(//span[@class="version"])' - 2> /dev/null)
+echo "Latest version: $LATEST_VERSION"
 
 if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 	echo "Found an outdated version of Atom \"$CURRENT_VERSION\"."
@@ -40,12 +38,6 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 	wget -O $TEMP_DIR/atom.deb https://atom.io/download/deb
 
   dpkg -i $TEMP_DIR/atom.deb
-  # Extract the Arduino folder from archive to the install path.
 else
 	echo "Atom is up to date: \"$CURRENT_VERSION\""
-fi
-
-# Clean up after us self.
-if [ -e $TEMP_DIR ]; then
-  rm -rf $TEMP_DIR
 fi
