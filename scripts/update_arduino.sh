@@ -12,6 +12,7 @@ fi
 # Get source directory for this script.
 DIR=$(dirname `realpath $0`)
 
+# Import support functions.
 . $DIR/functions.sh
 
 # Create temporary directory for storing downloaded archives.

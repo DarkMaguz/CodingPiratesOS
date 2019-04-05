@@ -21,3 +21,12 @@ install_depends() {
   	apt install -y $missing
   fi
 }
+
+clean_up() {
+  # Clean up after us self.
+  if [ -e "$TEMP_DIR" ]; then
+    rm -rf $TEMP_DIR
+  fi
+}
+
+trap clean_up EXIT
