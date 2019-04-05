@@ -1,8 +1,5 @@
 #!/bin/sh -e
 
-# This has not been tested properly yet!
-exit
-
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
         echo "Please run as root"
@@ -60,8 +57,9 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 
   # Extract the Arduino folder from archive to the install path.
   tar -xvC $INSTALL_PATH --strip-components=1 -f $TEMP_DIR/$FILE_NAME
-  . $INSTALL_PATH/install.sh
-  #. $INSTALL_PATH/arduino-linux-setup.sh
+
+  # Setup icons, menu items and file associations.
+  sh $INSTALL_PATH/install.sh
 else
 	echo "Arduino is up to date: \"$CURRENT_VERSION\""
 fi
