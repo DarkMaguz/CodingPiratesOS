@@ -24,6 +24,7 @@ ARDUINO_URL="https://www.arduino.cc/en/Main/Software"
 
 # List of dependencies to be installed.
 DEPEND_PKGS="librxtx-java libjna-java libxml2-utils wget xdg-utils"
+
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 
@@ -63,9 +64,4 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
   #. $INSTALL_PATH/arduino-linux-setup.sh
 else
 	echo "Arduino is up to date: \"$CURRENT_VERSION\""
-fi
-
-# Clean up after us self.
-if [ -e $TEMP_DIR ]; then
-  rm -rf $TEMP_DIR
 fi
