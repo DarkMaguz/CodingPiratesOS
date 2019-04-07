@@ -1,8 +1,5 @@
 #!/bin/sh -e
 
-# This has not been tested properly yet!
-exit
-
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
         echo "Please run as root"
@@ -12,6 +9,7 @@ fi
 # Get source directory for this script.
 DIR=$(dirname `realpath $0`)
 
+# Import support functions.
 . $DIR/functions.sh
 
 # Create temporary directory for storing downloaded archives.
@@ -23,6 +21,7 @@ ARDUINO_URL="https://www.arduino.cc/en/Main/Software"
 
 # List of dependencies to be installed.
 DEPEND_PKGS="librxtx-java libjna-java libxml2-utils wget xdg-utils"
+
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 
@@ -58,13 +57,9 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 
   # Extract the Arduino folder from archive to the install path.
   tar -xvC $INSTALL_PATH --strip-components=1 -f $TEMP_DIR/$FILE_NAME
-  . $INSTALL_PATH/install.sh
-  #. $INSTALL_PATH/arduino-linux-setup.sh
+
+  # Setup icons, menu items and file associations.
+  sh $INSTALL_PATH/install.sh
 else
 	echo "Arduino is up to date: \"$CURRENT_VERSION\""
-fi
-
-# Clean up after us self.
-if [ -e $TEMP_DIR ]; then
-  rm -rf $TEMP_DIR
 fi

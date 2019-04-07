@@ -2,8 +2,8 @@
 
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
-        echo "Please run as root"
-        exit
+  echo "Please run as root"
+  exit
 fi
 
 #cd ..
@@ -18,7 +18,6 @@ else
 	rm -rf build/*
 	rm -rf build/.build
 fi
-
 
 # Fix bug missing debian-cd pakage.
 ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
@@ -45,8 +44,11 @@ if [ ! -f ../data/build-version.txt ]; then
 	echo 1000 >../data/build-version.txt
 fi
 
-read line <../data/build-version.txt
-build_version=$(($line+1))
+read line <../data/VERSION
+MAJOR=$(echo $line | cut -d "." -f1)
+MINOR=$(echo $line | cut -d "." -f2)
+BUILD=$(echo $line | cut -d "." -f3)
+build_version="$MAJOR.$MINOR.$(($BUILD+1))"
 
 #sudo chown magnus:magnus live-image-amd64.hybrid.iso
 mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid.iso"
@@ -54,4 +56,4 @@ mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid
 #sudo chown magnus:magnus build.log
 cp build.log "../images/live-image-amd64-$build_version.build.log"
 
-echo $build_version> ../data/build-version.txt
+echo $build_version >../data/VERSION

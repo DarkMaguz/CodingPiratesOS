@@ -6,12 +6,11 @@ ARCHITECTURE=$(dpkg --print-architecture)
 # Useage: install_depends(STRING)
 #  Where STRING is a string comprised of names of packages spepareted by spaces.
 install_depends() {
-  local dependencies="$1"
   local missing=""
-  echo "Checking for $(echo "$dependencies" | wc -w) dependencies."
+  echo "Checking for $(echo "$@" | wc -w) dependencies."
 
   # Check for missing dependencies.
-  for pkg in $dependencies; do
+  for pkg in $@; do
     dpkg-query -s $pkg:$ARCHITECTURE > /dev/null 2>&1 || missing="$missing $pkg"
   done
 
@@ -22,3 +21,12 @@ install_depends() {
   	apt install -y $missing
   fi
 }
+
+clean_up() {
+  # Clean up after us self.
+  if [ -e "$TEMP_DIR" ]; then
+    rm -rf $TEMP_DIR
+  fi
+}
+
+trap clean_up EXIT

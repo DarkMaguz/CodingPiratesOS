@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+# Ensure that we have superpowers.
+if [ $(id -u) != 0 ]; then
+        echo "Please run as root"
+        exit
+fi
+
 ########################
 # Config               #
 ########################
@@ -16,13 +22,6 @@ if [ -z "$stdUser" ]; then
   echo "Please configure this script before running it."
   exit
 fi
-
-# Ensure that we have superpowers.
-if [ $(id -u) != 0 ]; then
-        echo "Please run as root"
-        exit
-fi
-
 
 ########################
 # Base System          #
@@ -109,7 +108,7 @@ apt install -y \
             rake \
             php \
 \
-            libdvdcss2 \
+            libdvd-pkg \
             libopencv-dev \
             libgtkmm-3.0-dev \
             libglibmm-2.4-dev \
@@ -131,7 +130,6 @@ apt install -y \
 \
             arduino \
             scratch \
-            squeak-plugins-scratch \
             squeak-vm \
             fritzing \
             idle \
@@ -236,12 +234,17 @@ sh update_unity.sh
 
 # Install graphics drivers.
 if [ ! -z "$(lspci | grep NVIDIA)" ]; then
-        sudo apt install -y nvidia-driver nvidia-kernel-dkms
+  sudo apt install -y nvidia-driver nvidia-kernel-dkms
 fi
 
 if [ ! -z "$(lspci | grep AMD/ATI)" ]; then
-        sudo apt install -y firmware-amd-graphics
+  sudo apt install -y firmware-amd-graphics
 fi
+
+if [ ! -z "$(lspci | grep Intel | grep 'Wireless\|Advanced-N\|Ultimate-N\|WiFi')" ]; then
+  apt install -y firmware-iwlwifi
+fi
+
 
 # Install Steam.
 dpkg --add-architecture i386
