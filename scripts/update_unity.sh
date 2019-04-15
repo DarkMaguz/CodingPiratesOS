@@ -13,8 +13,8 @@ DEPEND_PKGS="curl wget libxml2-utils xdg-utils jshon coreutils gconf-service lib
 
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
-	echo "Please run as root"
-	exit
+  echo "Please run as root"
+  exit
 fi
 
 # Check for dependencies.
@@ -22,9 +22,9 @@ install_depends $DEPEND_PKGS
 
 # Make sure we have a directory to install Unity into.
 if [ ! -d $UNITY_PATH ]; then
-	echo "The directory does not exist: $UNITY_PATH"
-	echo "Creating new unity directory..."
-	mkdir -p $UNITY_PATH
+  echo "The directory does not exist: $UNITY_PATH"
+  echo "Creating new unity directory..."
+  mkdir -p $UNITY_PATH
 fi
 
 # Create temporary directory for storing downloaded archives.
@@ -54,32 +54,36 @@ echo "Current version: $CURRENT_VERSION"
 # Check if we have the latest version.
 UPDATE=""
 if [ -z $CURRENT_VERSION ]; then
-	UPDATE=true
+  UPDATE=true
 elif [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
-	UPDATE=true
+  UPDATE=true
 fi
 
 # Do the update/install if needed.
 if [ $UPDATE ]; then
   # Get the archive URL.
   INSTALLER_URL=$(jshon -F releases-linux.json -e official -e -1 -e downloadUrl | tr -d "\"" | tr -d "\\")
-	if [ -z $INSTALLER_URL ]; then
-	  echo "Failed to get the URL for the archive!"
-	  echo "Terminating..."
-	  exit 1
-	fi
+  if [ -z $INSTALLER_URL ]; then
+    echo "Failed to get the URL for the archive!"
+    echo "Terminating..."
+    exit 1
+  fi
 
-	# Download unity.
+  # Download unity.
   wget $INSTALLER_URL
 
-	# Get name of the archive file.
-	UNITY_ARCHIVE=$(echo $INSTALLER_URL | rev | cut -d'/' -f1 | rev)
+  # Get name of the archive file.
+  UNITY_ARCHIVE=$(echo $INSTALLER_URL | rev | cut -d'/' -f1 | rev)
 
-	# Extract the archive.
-	tar -xvf $UNITY_ARCHIVE -C $UNITY_PATH
+  # Extract the archive.
+  tar -xvf $UNITY_ARCHIVE -C $UNITY_PATH
 
-	# Add Gnome desktop entry.
-	xdg-desktop-menu install --novendor $DIR/../data/Unity.desktop
+  # Add Gnome desktop entry.
+  xdg-desktop-menu install --novendor $DIR/../data/Unity.desktop
 
-	ln -s $UNITY_PATH/Editor/Unity /usr/bin/Unity
+  if [ -e /usr/bin/Unity ]; then
+    rm -f /usr/bin/Unity
+  fi
+
+  ln -s $UNITY_PATH/Editor/Unity /usr/bin/Unity
 fi
