@@ -4,8 +4,8 @@ if [ $(docker ps -a -f "name=/scratch3$" -q) ]; then
   docker rm -f scratch3
 fi
 
-docker pull darkmagus/scratch3
-docker run -p 8601:8601 -d --name scratch3 darkmagus/scratch3
+#docker pull darkmagus/scratch3
+#docker run -p 8601:80 -d --name scratch3 darkmagus/scratch3
 
 s3splash
 
