@@ -51,11 +51,11 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" -o "$LATEST_UPDATE" != "$CURRENT_UP
 	echo "Found outdated version of Java JRE: Version $CURRENT_VERSION Update $CURRENT_UPDATE."
 	echo "Downloading new version of Java JRE: Version $LATEST_VERSION Update $LATEST_UPDATE."
 	JRE_ARCHIVE="jre-"$LATEST_VERSION"u"$LATEST_UPDATE"-linux-x64.tar.gz"
-  wget -q --show-progress $DL_LINK -O $JRE_ARCHIVE
+	wget -q --show-progress $DL_LINK -O $JRE_ARCHIVE
 	tar zxvf $JRE_ARCHIVE
 	rm $JRE_ARCHIVE
 	rm -rf $CURRENT_DIR
-	if [ -e $DEFAULT_PATH ]; then
+	if [ -e $DEFAULT_PATH -o -L $DEFAULT_PATH ]; then
 		rm -f $DEFAULT_PATH
 	fi
 	echo "Creating symbolic link..."
@@ -63,6 +63,9 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" -o "$LATEST_UPDATE" != "$CURRENT_UP
 else
 	echo "Java JRE is up to date: Version $CURRENT_VERSION Update $CURRENT_UPDATE."
 	if [ ! -e $DEFAULT_PATH ]; then
+		if [ -L $DEFAULT_PATH ]; then
+			rm -f $DEFAULT_PATH
+		fi
 		echo "Creating missing symbolic link..."
 		ln -s $JWM_PATH/$CURRENT_DIR $DEFAULT_PATH
 	fi
