@@ -17,7 +17,7 @@ fi
 INSTALL_PATH=/opt/Scratch3
 
 # List of dependencies to be installed.
-DEPEND_PKGS="libgtkmm-3.0-dev autotools-dev libboost-system-dev libboost-thread-dev google-chrome docker-ce git xdg-utils"
+DEPEND_PKGS="libcurl4-openssl-dev libgtkmm-3.0-dev autotools-dev libboost-system-dev libboost-thread-dev google-chrome-stable docker-ce git xdg-utils"
 
 # Check for dependencies.
 install_depends $DEPEND_PKGS
@@ -53,7 +53,7 @@ if [ "$SPLASH_SCREEN_STATE" != "none" ]; then
 fi
 
 # If we have cloned...
-if [ "$SPLASH_SCREEN_STATE" == "cloned" ]; then
+if [ "$SPLASH_SCREEN_STATE" = "cloned" ]; then
   # Add Gnome desktop entry.
   xdg-desktop-menu install --novendor $DIR/../data/Scratch3/Scratch3.desktop
 

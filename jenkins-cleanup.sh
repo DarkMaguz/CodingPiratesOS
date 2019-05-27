@@ -15,4 +15,5 @@ docker run -t \
   -v $PWD/data:/usr/app/data \
   -v $PWD/scripts:/usr/app/scripts:ro \
   --name="CodingPiratesOS$1" \
-  darkmagus/codingpiratesos
+  darkmagus/codingpiratesos \
+  rm -f /usr/app/images/*
