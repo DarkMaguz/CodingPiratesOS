@@ -20,18 +20,15 @@ else
   echo "kkk"
 fi
 
-#if [ ! -e /usr/share/live/build/data/debian-cd/buster ]; then
-  # Fix bug missing debian-cd pakage.
+# Fix bug missing debian-cd pakage.
 rm /usr/share/live/build/data/debian-cd/buster
 ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
 
-  # Fix bug in debootstrap, when mounting /proc in docker.
+# Fix bug in debootstrap, when mounting /proc in docker.
 patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.patch
 
-  # Debug skip compression of squashFS.
+# Debug skip compression of squashFS.
 #patch /usr/lib/live/build/binary_rootfs < data/patch/binary_rootfs.patch
-#  echo "kkk"
-#fi
 
 # Copy config files to build dir.
 cp -r -u basics/* build/
