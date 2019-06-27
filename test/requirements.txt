@@ -1,0 +1,4 @@
+vncdotool >= 0.12.1
+Pillow >= 6.0.0
+Twisted >= 19.2.0
+interruptingcow >= 0.8

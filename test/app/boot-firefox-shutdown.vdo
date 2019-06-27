@@ -1,0 +1,394 @@
+pause 3.6079 keydown enter 
+pause 0.0611 keyup enter 
+pause 79.3183 move 22 101 
+pause 0.0239 move 37 98 
+pause 0.0271 move 39 97 
+pause 0.0146 move 42 96 
+pause 0.0224 move 45 93 
+pause 0.0240 move 47 88 
+pause 0.0240 move 49 77 
+pause 0.0239 move 50 66 
+pause 0.0261 move 51 57 
+pause 0.0246 move 52 51 
+pause 0.0166 move 52 44 
+pause 0.0247 move 52 39 
+pause 0.0220 move 52 34 
+pause 0.0309 move 53 29 
+pause 0.0103 move 53 28 
+pause 0.0870 move 53 26 
+pause 0.0239 move 53 25 
+pause 0.0239 move 53 23 
+pause 0.0180 move 53 22 
+pause 0.0241 move 53 21 
+pause 0.0799 move 53 19 
+pause 0.0319 move 52 19 
+pause 0.1486 move 52 18 click 1 
+pause 0.0062 click 1 
+pause 0.0553 
+pause 0.0163 
+pause 1.0719 move 60 22 
+pause 0.0239 move 85 26 
+pause 0.0253 move 108 29 
+pause 0.0161 move 147 30 
+pause 0.0238 move 196 36 
+pause 0.0219 move 241 41 
+pause 0.0252 move 268 45 
+pause 0.0237 move 279 48 
+pause 0.0269 move 283 49 
+pause 0.0426 move 284 51 
+pause 0.0217 move 285 56 
+pause 0.0162 move 286 64 
+pause 0.0226 move 286 71 
+pause 0.0242 move 286 75 
+pause 0.0173 move 279 83 
+pause 0.0226 move 268 93 
+pause 0.0248 move 262 99 
+pause 0.0166 move 254 106 
+pause 0.0226 move 247 114 
+pause 0.0239 move 240 121 
+pause 0.0268 move 237 124 
+pause 0.0206 move 235 127 
+pause 0.0186 move 232 130 
+pause 0.0239 move 229 134 
+pause 0.0238 move 223 139 
+pause 0.0261 move 220 144 
+pause 0.0222 move 217 146 
+pause 0.0242 move 217 148 
+pause 0.0479 
+pause 0.0480 move 223 148 
+pause 0.0242 move 230 145 
+pause 0.0179 move 244 139 
+pause 0.0241 move 261 131 
+pause 0.0240 move 283 123 
+pause 0.0239 move 305 118 
+pause 0.0265 move 322 112 
+pause 0.0216 move 343 105 
+pause 0.0239 move 363 100 
+pause 0.0239 move 374 98 
+pause 0.0241 move 379 96 
+pause 0.0239 move 382 96 
+pause 0.0240 move 384 95 
+pause 0.0181 move 385 95 
+pause 0.0263 move 385 94 
+pause 0.0297 move 387 94 
+pause 0.0239 move 392 93 
+pause 0.0240 move 398 90 
+pause 0.0239 move 404 88 
+pause 0.0243 move 411 85 
+pause 0.0241 move 418 82 
+pause 0.0238 move 423 80 
+pause 0.0240 move 425 78 
+pause 0.0245 move 427 77 
+pause 0.0234 move 428 75 
+pause 0.0502 move 429 75 
+pause 0.0737 click 1 
+pause 0.0933 
+pause 0.0172 
+pause 0.1543 move 431 75 
+pause 0.0236 move 432 75 
+pause 4.0945 move 431 73 
+pause 0.1752 move 425 73 
+pause 0.0241 move 417 74 
+pause 0.0239 move 412 77 
+pause 0.0240 move 409 79 
+pause 0.0180 move 402 82 
+pause 0.0241 move 383 90 
+pause 0.0268 move 348 106 
+pause 0.0184 move 320 118 
+pause 0.0195 move 277 139 
+pause 0.0263 move 234 161 
+pause 0.0186 move 202 176 
+pause 0.0187 move 151 201 
+pause 0.0238 move 122 217 
+pause 0.0241 move 115 220 
+pause 0.0251 move 112 222 
+pause 0.0227 move 110 223 
+pause 0.0179 move 106 227 
+pause 0.0240 move 100 230 
+pause 0.0240 move 93 234 
+pause 0.0240 move 91 236 
+pause 0.0643 move 91 237 
+pause 0.0237 move 89 238 
+pause 0.0246 move 87 240 
+pause 0.0232 move 84 241 
+pause 0.0242 move 80 243 
+pause 0.0243 move 78 243 
+pause 0.0180 move 76 244 
+pause 0.0811 click 1 
+pause 0.0615 
+pause 0.0178 
+pause 15.7067 move 84 242 
+pause 0.0246 move 98 238 
+pause 0.0242 move 113 234 
+pause 0.0243 move 134 227 
+pause 0.0241 move 164 221 
+pause 0.0295 move 193 217 
+pause 0.0182 move 219 215 
+pause 0.0235 move 244 213 
+pause 0.0243 move 265 210 
+pause 0.0265 move 280 208 
+pause 0.0265 move 295 205 
+pause 0.0217 move 309 202 
+pause 0.0235 move 321 201 
+pause 0.0237 move 334 200 
+pause 0.0242 move 351 198 
+pause 0.0294 move 365 195 
+pause 0.0186 move 374 192 
+pause 0.0238 move 381 188 
+pause 0.0243 move 387 184 
+pause 0.0238 move 391 181 
+pause 0.0187 move 398 176 
+pause 0.0244 move 407 170 
+pause 0.0231 move 413 167 
+pause 0.0238 move 417 164 
+pause 0.0253 move 421 161 
+pause 0.0245 move 426 159 
+pause 0.0225 move 431 155 
+pause 0.0241 move 437 152 
+pause 0.0270 move 440 150 
+pause 0.0186 move 443 149 
+pause 0.0182 move 446 147 
+pause 0.0251 move 448 145 
+pause 0.0269 move 450 143 
+pause 0.0247 move 452 142 
+pause 0.0213 move 453 141 
+pause 0.0239 move 454 139 
+pause 0.0351 move 455 138 
+pause 0.0144 move 458 135 
+pause 0.0224 move 461 132 
+pause 0.0243 move 462 130 
+pause 0.0317 move 464 128 
+pause 0.0247 move 465 126 
+pause 0.0315 move 466 125 
+pause 0.0260 move 466 124 
+pause 0.0637 move 466 123 
+pause 0.3883 click 1 
+pause 0.0625 
+pause 0.0165 
+pause 0.0879 click 1 
+pause 0.0579 
+pause 0.0167 
+pause 1.4770 keydown d 
+pause 0.1212 keyup d 
+pause 0.1225 keydown r 
+pause 0.1124 keyup r 
+pause 0.5378 keydown . 
+pause 0.1024 keyup . 
+pause 0.1116 keydown d 
+pause 0.0923 keyup d 
+pause 0.0905 keydown k 
+pause 0.1220 keyup k 
+pause 1.3717 keydown shift 
+pause 0.2125 keydown home 
+pause 0.0762 keyup home 
+pause 0.1297 keyup shift 
+pause 0.7199 keydown d 
+pause 0.1117 keydown a 
+pause 0.0405 keyup d 
+pause 0.1331 keyup a 
+pause 0.1014 keydown r 
+pause 0.1221 keyup r 
+pause 0.0227 keydown k 
+pause 0.0887 keyup k 
+pause 0.4972 keydown m 
+pause 0.0816 keyup m 
+pause 0.1238 keydown a 
+pause 0.1122 keyup a 
+pause 0.0989 keydown g 
+pause 0.0829 keyup g 
+pause 0.4059 keydown u 
+pause 0.0720 keyup u 
+pause 0.0539 keydown s 
+pause 0.0773 keyup s 
+pause 0.4293 keydown . 
+pause 0.1108 keyup . 
+pause 0.0379 keydown d 
+pause 0.0932 keyup d 
+pause 0.4469 keydown k 
+pause 0.0817 keyup k 
+pause 0.5496 keydown enter 
+pause 0.0906 keyup enter 
+pause 2.9986 move 482 118 
+pause 0.0240 move 517 107 
+pause 0.0239 move 558 98 
+pause 0.0241 move 606 89 
+pause 0.0239 move 658 84 
+pause 0.0241 move 718 78 
+pause 0.0241 move 775 70 
+pause 0.0239 move 819 63 
+pause 0.0264 move 851 58 
+pause 0.0223 move 879 54 
+pause 0.0260 move 894 50 
+pause 0.0144 move 909 45 
+pause 0.0276 move 918 43 
+pause 0.0216 move 922 41 
+pause 0.0247 move 928 39 
+pause 0.0218 move 932 37 
+pause 0.0172 move 939 34 
+pause 0.0272 move 942 33 
+pause 0.0142 move 946 31 
+pause 0.0317 move 948 30 
+pause 0.0241 move 951 29 
+pause 0.0255 move 954 29 
+pause 0.0142 move 960 29 
+pause 0.0242 move 963 28 
+pause 0.0177 move 968 28 
+pause 0.0233 move 972 28 
+pause 0.0239 move 975 29 
+pause 0.0239 move 978 29 
+pause 0.0245 move 980 30 
+pause 0.0169 move 982 31 
+pause 0.0227 move 984 31 
+pause 0.0238 move 985 32 
+pause 0.0242 move 987 33 
+pause 0.0236 move 990 33 
+pause 0.0250 move 992 34 
+pause 0.0251 move 994 34 
+pause 0.0152 move 997 35 
+pause 0.0233 move 998 35 
+pause 0.0214 
+pause 0.0133 move 999 35 
+pause 0.1840 click 1 
+pause 0.0479 
+pause 0.0169 
+pause 0.1602 move 999 33 
+pause 0.0252 move 999 29 
+pause 0.0247 move 998 27 
+pause 0.0202 move 997 25 
+pause 0.0181 move 997 22 
+pause 0.0249 move 996 21 
+pause 0.0168 move 996 19 
+pause 0.0400 move 995 18 
+pause 0.0242 move 994 16 
+pause 0.0317 move 994 15 
+pause 0.0406 move 994 14 
+pause 1.0003 move 989 23 
+pause 0.0234 move 975 55 
+pause 0.0237 move 946 118 
+pause 0.0241 move 910 194 
+pause 0.0267 move 874 264 
+pause 0.0237 move 854 302 
+pause 0.0147 move 827 349 
+pause 0.0235 move 806 388 
+pause 0.0240 move 795 408 
+pause 0.0176 move 784 429 
+pause 0.0239 move 778 440 
+pause 0.0259 move 776 443 
+pause 0.0153 move 775 445 
+pause 0.0547 move 774 448 
+pause 0.0249 move 772 450 
+pause 0.0171 move 771 453 
+pause 0.1444 click 1 
+pause 0.0877 
+pause 0.0163 
+pause 0.2821 move 774 447 
+pause 0.0239 move 784 434 
+pause 0.0284 move 802 405 
+pause 0.0194 move 824 368 
+pause 0.0241 move 850 324 
+pause 0.0250 move 871 283 
+pause 0.0247 move 887 250 
+pause 0.0232 move 894 235 
+pause 0.0196 move 900 221 
+pause 0.0216 move 903 212 
+pause 0.0244 move 906 205 
+pause 0.0243 move 909 197 
+pause 0.0245 move 915 185 
+pause 0.0240 move 923 163 
+pause 0.0249 move 930 138 
+pause 0.0191 move 933 127 
+pause 0.0234 move 936 117 
+pause 0.0163 move 938 111 
+pause 0.0169 move 940 105 
+pause 0.0192 move 943 97 
+pause 0.0231 move 945 91 
+pause 0.0196 move 949 84 
+pause 0.0215 move 953 77 
+pause 0.0250 move 958 70 
+pause 0.0236 move 962 62 
+pause 0.0241 move 966 55 
+pause 0.0238 move 969 51 
+pause 0.0254 move 972 48 
+pause 0.0248 move 976 42 
+pause 0.0221 move 979 37 
+pause 0.0238 move 983 33 
+pause 0.0248 move 987 29 
+pause 0.0232 move 990 24 
+pause 0.0280 move 993 20 
+pause 0.0220 move 995 17 
+pause 0.0652 move 996 17 
+pause 0.2924 click 1 
+pause 0.0519 
+pause 0.0156 
+pause 0.5015 move 993 24 
+pause 0.0233 move 986 47 
+pause 0.0243 move 975 82 
+pause 0.0248 move 965 113 
+pause 0.0230 move 957 141 
+pause 0.0247 move 952 161 
+pause 0.0165 move 946 184 
+pause 0.0247 move 940 206 
+pause 0.0240 move 938 224 
+pause 0.0239 move 936 234 
+pause 0.0260 move 935 241 
+pause 0.0220 move 935 245 
+pause 0.0243 move 935 246 
+pause 0.0237 move 935 247 
+pause 0.2267 move 936 246 
+pause 0.0237 move 938 244 
+pause 0.0239 move 939 244 
+pause 0.0238 move 940 243 
+pause 0.0240 move 941 243 
+pause 0.0260 move 942 242 
+pause 0.0175 move 943 241 
+pause 0.0225 move 945 240 
+pause 0.1535 click 1 
+pause 0.0699 
+pause 0.0168 
+pause 0.6787 move 945 239 
+pause 0.1450 move 944 240 
+pause 0.0239 move 942 241 
+pause 0.0241 move 940 243 
+pause 0.0240 move 938 245 
+pause 0.0249 move 935 248 
+pause 0.0240 move 934 249 
+pause 0.0164 move 932 250 
+pause 0.0226 move 930 252 
+pause 0.0243 move 928 254 
+pause 0.0239 move 924 257 
+pause 0.0257 move 917 261 
+pause 0.0242 move 910 268 
+pause 0.0241 move 898 280 
+pause 0.0240 move 882 293 
+pause 0.0251 move 865 309 
+pause 0.0230 move 845 326 
+pause 0.0240 move 825 343 
+pause 0.0266 move 810 356 
+pause 0.0186 move 801 365 
+pause 0.0188 move 791 373 
+pause 0.0240 move 784 379 
+pause 0.0241 move 780 383 
+pause 0.0186 move 774 389 
+pause 0.0232 move 767 394 
+pause 0.0238 move 761 400 
+pause 0.0246 move 753 405 
+pause 0.0237 move 747 411 
+pause 0.0240 move 740 415 
+pause 0.0241 move 735 419 
+pause 0.0239 move 730 422 
+pause 0.0255 move 725 426 
+pause 0.0226 move 721 429 
+pause 0.0263 move 719 430 
+pause 0.0149 move 716 432 
+pause 0.0248 move 712 434 
+pause 0.0238 move 709 437 
+pause 0.0242 move 706 440 
+pause 0.0240 move 702 443 
+pause 0.0240 move 699 446 
+pause 0.0244 move 697 448 
+pause 0.0243 move 695 450 
+pause 0.0304 move 694 451 
+pause 0.1145 move 693 451 click 1 
+pause 0.0004 click 1 
+pause 0.0713 
+pause 0.0170 

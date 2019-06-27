@@ -25,16 +25,31 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
     * - [x] 64 bit Cinnamon Heavy
     * - [ ] ~32 bit Cinnamon Heavy~
     * - [ ] 64 bit Cinnamon Light
-    * - [ ] 32 bit Cinnamon Light
+    * - [ ] 32 bit Cinnamon
+13. - [x] Construct automated test system for CI
+    * - [x] Create a simple smoke test
+    * - [ ] Create smoke tests for frequently used programs
+    * - [ ] Smoke tests for everything
+    * - [ ] Smoke tests for things that clearly does not need smoke tests
+    * - [ ] Some more smoke tests
+
+---
+
+Update: June 27th 2019 <br>
+>Added the basics of an automated test system. This is still very much a work in progress. <br>
+In order to get started first create a symlink named 'image-to-be-tested.iso' in the <br>
+'images' folder pointing to the desired iso file that is to be tested. <br>
+Now go to the 'test' folder and run the commands: `docker-compose build` and `docker-compose up --exit-code-from test`.
 
 ---
 
 Update: 31st March 2019 <br>
->It's now possible to use a persistence partition on the USB flash drive.
+>It's now possible to use a persistence partition on the USB flash drive. <br>
 In order to use this feature it's necessary to have a file named "persistence.conf"
-in the root of the file-system that has a volume label named "persistence".
+in the root of the file-system that has a volume label named "persistence". <br>
 A directory and it's sub dirs can be made persistent by adding a
-path to that directory in the "persistence.conf" file i.e. '/home'.
+path to that directory in the "persistence.conf" file i.e. '/home'. <br>
+See Manual page persistence.conf(5) for more information.
 
 ---
 

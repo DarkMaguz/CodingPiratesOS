@@ -1,0 +1,18 @@
+version: '3'
+services:
+  qemu:
+    build: ./qemu
+    ports:
+      - "5900:5900"
+    devices:
+      - "/dev/kvm"
+    environment:
+      ISOPATH: images/image-to-be-tested.iso
+    volumes:
+      - ../images:/usr/app/images:ro
+  test:
+    build: .
+    depends_on:
+      - qemu
+    volumes:
+      - ./app:/usr/app
