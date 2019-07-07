@@ -8,8 +8,8 @@ docker build -t darkmagus/codingpiratesos .
 
 docker run -t \
   -u root \
-  -v $PWD/build:/usr/app/build \
   --privileged \
+  -v build:/usr/app/build \
   -v $PWD/images:/usr/app/images \
   -v $PWD/basics:/usr/app/basics:ro \
   -v $PWD/data:/usr/app/data \
