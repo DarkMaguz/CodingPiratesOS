@@ -13,7 +13,7 @@ DIR=$(dirname `realpath $0`)
 . $DIR/functions.sh
 
 # Create temporary directory for storing downloaded archives.
-TEMP_DIR=$(mktemp -d /tmp/$0.XXXXXX)
+TEMP_DIR=$(mktemp -d /tmp/$(echo $0 | rev | cut -d "/" -f1 | rev).XXXXXX)
 
 # Install path for Arduino.
 INSTALL_PATH=/opt/Arduino
