@@ -13,14 +13,14 @@ DIR=$(dirname `realpath $0`)
 . $DIR/functions.sh
 
 # Create temporary directory for storing downloaded archives.
-TEMP_DIR=$(mktemp -d /tmp/$0.XXXXXX)
+TEMP_DIR=$(mktemp -d /tmp/$(echo $0 | rev | cut -d "/" -f1 | rev).XXXXXX)
 
 # Install path for Arduino.
 INSTALL_PATH=/opt/Arduino
 ARDUINO_URL="https://www.arduino.cc/en/Main/Software"
 
 # List of dependencies to be installed.
-DEPEND_PKGS="librxtx-java libjna-java libxml2-utils wget xdg-utils"
+DEPEND_PKGS="librxtx-java libjna-java libxml2-utils wget xdg-utils xz-utils"
 
 # Check for dependencies.
 install_depends $DEPEND_PKGS
@@ -60,6 +60,9 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 
   # Setup icons, menu items and file associations.
   sh $INSTALL_PATH/install.sh
+
+  # Add user to dialout group. Needed for access to serial ports while flashing the chips.
+  sudo usermod -a -G dialout $USER
 else
 	echo "Arduino is up to date: \"$CURRENT_VERSION\""
 fi

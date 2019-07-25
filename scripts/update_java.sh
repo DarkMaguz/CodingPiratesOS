@@ -1,17 +1,20 @@
 #!/bin/sh -e
 
-# Import functions.
-. $PWD/functions.sh
-
-JWM_PATH=/usr/lib/jvm
-DEFAULT_PATH=/usr/lib/jvm/default-java
-DEPEND_PKGS="wget libxml2-utils tar coreutils"
-
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
 	echo "Please run as root"
 	exit
 fi
+
+# Get source directory for this script.
+DIR=$(dirname `realpath $0`)
+
+# Import functions.
+. $DIR/functions.sh
+
+JWM_PATH=/usr/lib/jvm
+DEFAULT_PATH=/usr/lib/jvm/default-java
+DEPEND_PKGS="wget libxml2-utils tar gzip coreutils"
 
 if [ ! -d $JWM_PATH ]; then
 	echo "The directory does not exist: $JWM_PATH"

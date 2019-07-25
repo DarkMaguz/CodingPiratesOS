@@ -18,7 +18,7 @@ FF_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=da"
 DESKTOP_ENTRY="$(cat $DIR/../data/Firefox.desktop)"
 
 # List of dependencies to be installed.
-DEPEND_PKGS="wget libxml2-utils tar coreutils grep"
+DEPEND_PKGS="wget libxml2-utils tar bzip2 coreutils grep"
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 

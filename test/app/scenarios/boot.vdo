@@ -1,0 +1,4 @@
+pause 2 keydown enter
+pause 0.1 keyup enter
+pause 60
+expect ../screendumps/desktop.png 0
