@@ -28,7 +28,7 @@ if [ ! -d $UNITY_PATH ]; then
 fi
 
 # Create temporary directory for storing downloaded archives.
-TEMP_DIR=$(mktemp -d /tmp/$0.XXXXXX)
+TEMP_DIR=$(mktemp -d /tmp/$(echo $0 | rev | cut -d "/" -f1 | rev).XXXXXX)
 cd $TEMP_DIR
 
 # Get available versions.
