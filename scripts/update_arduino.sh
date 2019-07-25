@@ -60,6 +60,9 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 
   # Setup icons, menu items and file associations.
   sh $INSTALL_PATH/install.sh
+
+  # Add user to dialout group. Needed for access to serial ports while flashing the chips.
+  sudo usermod -a -G dialout $USER
 else
 	echo "Arduino is up to date: \"$CURRENT_VERSION\""
 fi
