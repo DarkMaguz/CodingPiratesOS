@@ -5,7 +5,7 @@
 
 JWM_PATH=/usr/lib/jvm
 DEFAULT_PATH=/usr/lib/jvm/default-java
-DEPEND_PKGS="wget libxml2-utils tar coreutils"
+DEPEND_PKGS="wget libxml2-utils tar gzip coreutils"
 
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
