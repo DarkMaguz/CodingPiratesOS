@@ -21,14 +21,15 @@ install_depends $DEPEND_PKGS
 
 # Get the current version.
 if [ $(which atom) ]; then
-	CURRENT_VERSION=$(atom --version | head -n 1 | tr -d "[:space:]" | cut -d ":" -f 2)
+	CURRENT_VERSION=$(dpkg --status atom | grep -i "version:" | cut -d " " -f 2)
 else
-	CURRENT_VERSION="0.0.0"
+  CURRENT_VERSION=""
 fi
 
 # Get the latest version available.
 LATEST_VERSION=$(wget -q -O - https://atom.io | xmllint --html --xpath 'string(//span[@class="version"])' - 2> /dev/null)
 echo "Latest version: $LATEST_VERSION"
+echo "Current version: $CURRENT_VERSION"
 
 if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 	echo "Found an outdated version of Atom \"$CURRENT_VERSION\"."
