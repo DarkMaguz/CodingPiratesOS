@@ -11,6 +11,7 @@ lb config noauto \
           --binary-images iso-hybrid \
           --binary-filesystem fat32 \
           --bootappend-live "boot=live components autologin quiet noeject username=${CP_USERNAME} hostname=${CP_HOSTNAME} locales=da_DK.UTF-8 keyboard-layouts=dk" \
+          --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl,gpg,gnupg2,software-properties-common,curl" \
           --cache true \
           --checksums none \
           --compression none \
