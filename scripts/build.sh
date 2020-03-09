@@ -6,8 +6,6 @@ if [ $(id -u) != 0 ]; then
   exit
 fi
 
-#cd ..
-
 if [ ! -d images/ ]; then
 	mkdir -p images/
 fi
@@ -15,9 +13,8 @@ fi
 if [ ! -d build/ ]; then
 	mkdir -p build/
 else
-	#rm -rf build/*
-  #rm -rf build/.build
-  echo "kkk"
+	rm -rf build/*
+  rm -rf build/.build
 fi
 
 # Fix bug missing debian-cd pakage.

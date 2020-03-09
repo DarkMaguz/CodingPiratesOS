@@ -1,0 +1,10 @@
+### THIS FILE IS AUTOMATICALLY CONFIGURED ###
+# You may comment out this entry, but any other modifications may be lost.
+
+# To get a the binary key:
+# 1. Follow the instructions at https://www.google.com/linuxrepositories/
+#    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# 2. Export the key in binary using apt-key.
+#    apt-key adv --output google-chrome.key --export linux-packages-keymaster@google.com
+
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main

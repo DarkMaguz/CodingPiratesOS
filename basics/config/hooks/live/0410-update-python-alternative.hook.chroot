@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+# Install alternatives for Python.
+update-alternatives --install /usr/bin/python python /usr/bin/python2.7 27
+update-alternatives --install /usr/bin/python python /usr/bin/python3.7 37
+
+# Set Python 3.7 as default.
+update-alternatives --set python /usr/bin/python3.7

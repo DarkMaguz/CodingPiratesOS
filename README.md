@@ -35,6 +35,13 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
 
 ---
 
+Update: July 28th 2019 <br>
+>CPOS is now at version 0.1.1 shipping with a bunch of extra repositories. <br>
+Next goal is to make a script/program that can write the hybrid iso to a USB flash drive <br>
+and create a persistent partition. Afterwards the Update scripts will be implemented.
+
+---
+
 Update: June 27th 2019 <br>
 >Added the basics of an automated test system. This is still very much a work in progress. <br>
 In order to get started first create a symlink named 'image-to-be-tested.iso' in the <br>
