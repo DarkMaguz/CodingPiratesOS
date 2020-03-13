@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-print("This tool is incomplet!")
-exit()
-
 import threading
 import time
 import subprocess
@@ -14,7 +11,7 @@ from gi.repository import GLib, Gtk, GObject
 
 _lock = threading.Lock()
 
-# Retuen list of tuples for each device. Each tuple holds "Device", "Removable", "Size", "Type", "Mount".
+# Return list of tuples for each device. Each tuple holds "Device", "Removable", "Size", "Type", "Mount" and children.
 def getDevices():
     devices = list()
     lsblk = subprocess.run(["lsblk", "-J"], capture_output=True, text=True)
@@ -27,7 +24,7 @@ def getDevices():
         devices.append((dev["name"], dev["rm"], dev["size"], dev["type"], dev["mountpoint"], children))
     return devices
 
-class TreeViewFilterWindow(Gtk.Window):
+class MainWindow(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="CPOS Disk Tool")
@@ -35,10 +32,12 @@ class TreeViewFilterWindow(Gtk.Window):
         self.set_default_size(800,600)
 
         #Setting up the self.grid in which the elements are to be positionned
-        self.grid = Gtk.Grid()
-        self.grid.set_column_homogeneous(True)
-        self.grid.set_row_homogeneous(True)
-        self.add(self.grid)
+        #self.grid = Gtk.Grid()
+        #self.grid.set_column_homogeneous(True)
+        #self.grid.set_row_homogeneous(True)
+        self.vbox_main = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.vbox_main.set_homogeneous(False)
+        self.add(self.vbox_main)
 
         #Creating the TreeStore model
         self.device_treestore = Gtk.TreeStore(str, bool, str, str, str)
@@ -49,17 +48,51 @@ class TreeViewFilterWindow(Gtk.Window):
             renderer = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(column_title, renderer, text=i)
             self.treeview.append_column(column)
+        #self.treeview.
 
         #setting up the layout, putting the treeview in a scrollwindow, and the buttons in a row
         self.scrollable_treestore = Gtk.ScrolledWindow()
-        self.scrollable_treestore.set_vexpand(True)
-        self.grid.attach(self.scrollable_treestore, 0, 0, 8, 10)
+        #self.scrollable_treestore.set_vexpand(True)
+        #self.grid.attach(self.scrollable_treestore, 0, 0, 8, 10)
         self.scrollable_treestore.add(self.treeview)
+        #self.vbox_main.pack_start(self.scrollable_treestore, True, True, 6)
+        #self.vbox_main.pack_start(self.treeview, True, True, 6)
 
         self.tree_selection = self.treeview.get_selection()
         self.tree_selection.set_mode(Gtk.SelectionMode.SINGLE)
         self.tree_selection.connect("changed", self.on_tree_selection_changed)
 
+        self.hbox_show_rm = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.hbox_show_rm.set_homogeneous(False)
+        self.lable_show_rm = Gtk.Label(label="Show non-removable drives")
+        self.hbox_show_rm.pack_start(self.lable_show_rm, True, False, 6)
+        self.switch_show_rm = Gtk.Switch()
+        self.hbox_show_rm.pack_start(self.switch_show_rm, False, False, 6)
+
+        self.hbox_persistance = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.hbox_persistance.set_homogeneous(False)
+        self.lable_persistance = Gtk.Label(label="Make persistance partition")
+        self.hbox_persistance.pack_start(self.lable_persistance, True, False, 6)
+        self.switch_persistance = Gtk.Switch()
+        self.hbox_persistance.pack_start(self.switch_persistance, False, False, 6)
+
+        self.hbox_pconf_nuke = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.hbox_pconf_nuke.set_homogeneous(False)
+        self.TextView_pconf = Gtk.TextView()
+        self.hbox_pconf_nuke.pack_start(self.TextView_pconf, True, True, 6)
+        self.button_nuke = Gtk.Button(label="Nuke this drive")
+        #self.button1.connect("clicked", self.on_button1_clicked)
+        self.hbox_pconf_nuke.pack_start(self.button_nuke, False, False, 6)
+
+        self.vbox_main.pack_start(self.scrollable_treestore, True, True, 6)
+        self.vbox_main.pack_start(self.hbox_show_rm, True, True, 6)
+        self.vbox_main.pack_start(self.hbox_persistance, True, True, 6)
+        self.vbox_main.pack_start(self.hbox_pconf_nuke, True, True, 6)
+
+        self.hbox_show_rm.set_homogeneous(False)
+        self.hbox_persistance.set_homogeneous(False)
+        self.hbox_pconf_nuke.set_homogeneous(False)
+        self.vbox_main.set_homogeneous(False)
 
         self.show_all()
 
@@ -68,8 +101,8 @@ class TreeViewFilterWindow(Gtk.Window):
         if treeiter is not None:
             if self.device_treestore.iter_parent(treeiter) != None:
                 self.tree_selection.unselect_iter(treeiter)
-            else:
-                print(model[treeiter][0])
+            #else:
+            #    print(model[treeiter][0])
 
     def update_device_liststor(self):
         with _lock:
@@ -89,13 +122,13 @@ class TreeViewFilterWindow(Gtk.Window):
                         child_iter = self.device_treestore.append(parent_iter, child[:-1])
             self.treeview.expand_all()
 
-win = TreeViewFilterWindow()
+win = MainWindow()
 win.update_device_liststor()
 
 def updater():
     while True:
         GLib.idle_add(win.update_device_liststor)
-        time.sleep(1)
+        time.sleep(100)
 
 thread = threading.Thread(target=updater)
 thread.daemon = True
