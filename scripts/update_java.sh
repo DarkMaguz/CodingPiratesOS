@@ -33,6 +33,11 @@ HTML_DATA=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint
 LATEST_VERSION=$(echo $HTML_DATA | cut -d' ' -f3)
 LATEST_UPDATE=$(echo $HTML_DATA | cut -d' ' -f5)
 
+if [ -z "$LATEST_VERSION" -o -z "$LATEST_UPDATE" ]; then
+	echo "ERROR: Unable to find latest version of Java VM!" >&2
+	exit
+fi
+
 CURRENT_VERSION=0
 CURRENT_UPDATE=0
 
