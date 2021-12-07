@@ -2,8 +2,10 @@ import os
 import docker
 import multiprocessing as mp
 
-verbose = True
+
+verbose = False
 archivesPath = os.path.abspath('../../basics/config/archives/')
+
 
 def buildTestImage():
   client = docker.from_env()
@@ -27,16 +29,17 @@ def runDocker(listFile, keyFile):
       'mode': 'ro'
     }
   }
+  logs = ""
+  exitCode = 0
   try:
     container = client.containers.run('darkmagus/apt-test', command='./docker-run.sh', volumes=volumes, detach=True)
-    container.wait()
+    exitCode = container.wait()["StatusCode"]
     logs = container.logs().decode()
-    if 'Err:' in logs:
-      return logs
   except docker.errors.ContainerError as e:
-    return str(e)
+    return [True, str(e)]
   else:
-    return None
+    hasError = 'Err:' in logs or exitCode != 0
+    return [hasError, logs]
 
 
 def runTest(repoName, listFile, keyFile, queue):
@@ -49,19 +52,22 @@ def joinProcesses(processes):
     p.join()
 
 
-def printFailure(repo):
-  if not verbose: return
-  lines = str(repo[1]).split('\n')
-  print('%s failed:\n\t%s' % (repo[0], '\n\t'.join(lines)))
+def printResult(result):
+  if not result[1][0]:
+    if not verbose:
+      return
+  lines = str(result[1][1]).split('\n')
+  status = 'failed' if result[1][0] else 'passed'
+  print('%s %s:\n\t%s' % (result[0], status, '\n\t'.join(lines)))
 
 
 def hasFailedRepo(queue):
   aRepoHasFailed = False
   while not queue.empty():
     result = queue.get()
-    if result[1] != None:
-      printFailure(result)
+    if result[1][0]:
       aRepoHasFailed = True
+    printResult(result)
   return aRepoHasFailed
 
 
