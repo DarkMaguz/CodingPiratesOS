@@ -11,8 +11,8 @@ archivesPath = os.path.abspath('../../basics/config/archives/')
 
 def buildTestImage():
   client = docker.from_env()
-  with open('Dockerfile', 'rb') as df:
-    client.images.build(fileobj=df, tag='darkmagus/apt-test')
+  with open('Dockerfile', 'rb') as dockerFile:
+    client.images.build(fileobj=dockerFile, tag='darkmagus/apt-test')
 
 
 def runDocker(listFile, keyFile):
