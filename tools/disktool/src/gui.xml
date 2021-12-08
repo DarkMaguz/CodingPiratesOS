@@ -1,0 +1,39 @@
+<interface>
+	<menu id='color-menu'>
+		<section>
+			$menuItems$
+		</section>
+	</menu>
+	<object class='GtkToolbar' id='toolbar'>
+		<property name='visible'>True</property>
+		<property name='can_focus'>False</property>
+		<child>
+			<object class='GtkToolButton' id='toolbutton_newgame'>
+				<property name='label'>New game</property>
+				<property name='visible'>True</property>
+				<property name='can_focus'>False</property>
+				<property name='tooltip_text' translatable='yes'>New Game</property>
+				<property name='action_name'>toolbar.newgame</property>
+				<property name='icon_name'>window-new</property>
+			</object>
+			<packing>
+				<property name='expand'>False</property>
+				<property name='homogeneous'>True</property>
+			</packing>
+		</child>
+		<child>
+			<object class='GtkToolButton' id='toolbutton_quit'>
+				<property name='label'>Quit</property>
+				<property name='visible'>True</property>
+				<property name='can_focus'>False</property>
+				<property name='tooltip_text' translatable='yes'>Quit</property>
+				<property name='action_name'>toolbar.quit</property>
+				<property name='icon_name'>application-exit</property>
+			</object>
+			<packing>
+				<property name='expand'>False</property>
+				<property name='homogeneous'>True</property>
+			</packing>
+		</child>
+	</object>
+</interface>
