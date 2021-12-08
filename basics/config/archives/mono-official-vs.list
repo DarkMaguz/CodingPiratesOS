@@ -1,1 +1,1 @@
-deb https://download.mono-project.com/repo/debian vs-stretch main
+deb https://download.mono-project.com/repo/debian vs-buster main
