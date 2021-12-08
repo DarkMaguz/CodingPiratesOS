@@ -33,7 +33,7 @@ else
 fi
 
 # Get the latest version available.
-LATEST_VERSION=$(wget -q -O - https://www.arduino.cc/en/main/software | xmllint --html --xpath 'string(//*[@id="wikitext"]/div[2]/div[3]/div[1]/div/div[2]/div[1])' - 2> /dev/null | tr '\n' ' ' | sed -e 's/[A-Z[:space:]]*//g')
+LATEST_VERSION=$(wget -q -O - $ARDUINO_URL | xmllint --html --xpath 'string(//div[@class="download-desc"]/h2)' - 2> /dev/null | tr '\n' ' ' | sed -e 's/[a-Z[:space:]]*//g')
 
 if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
 	echo "Found an outdated version of Arduino \"$CURRENT_VERSION\"."
@@ -49,11 +49,14 @@ if [ "$LATEST_VERSION" != "$CURRENT_VERSION" ]; then
   	mkdir -p $INSTALL_PATH
   fi
 
+  # Get the URL of the archive.
+  DL_URL=$(wget -q -O - $ARDUINO_URL | xmllint --html --xpath 'string(//a[@title="Linux 64 bits"]/@href)' - 2> /dev/null)
+
   # Get the file name of the archive.
-  FILE_NAME=$(wget -q -O - https://www.arduino.cc/en/main/software | xmllint --html --xpath 'string(//*[@id="wikitext"]/div[2]/div[3]/div[2]/p[3]/a[2]/@href)' - 2> /dev/null | cut -d '/' -f 5)
+  FILE_NAME=$(echo $DL_URL | cut -d '/' -f 4)
 
   # Download new Ardunio archive.
-	wget -P $TEMP_DIR https://downloads.arduino.cc/$FILE_NAME
+	wget -P $TEMP_DIR $DL_URL
 
   # Extract the Arduino folder from archive to the install path.
   tar -xvC $INSTALL_PATH --strip-components=1 -f $TEMP_DIR/$FILE_NAME

@@ -27,11 +27,18 @@ cd $JWM_PATH
 # Check for dependencies.
 install_depends $DEPEND_PKGS
 
-DL_LINK=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div[2]/div[1]/div/table[2]/tbody/tr[5]/td[2]/a/@href)' - 2> /dev/null)
-HTML_DATA=$(wget -q -O - https://java.com/en/download/linux_manual.jsp | xmllint --html --xpath 'string(/html/body/div/div/div/h4[@class="sub"])' - 2> /dev/null)
+HTML_DATA=$(wget -q -O - https://www.oracle.com/java/technologies/javase-jre8-downloads.html | xmllint --html --xpath 'string(//h4[contains(text(),"Java SE Runtime Environment")])' - 2> /dev/null)
+BUNDLE_ID=$(wget -q -O - https://www.oracle.com/java/technologies/javase-jre8-downloads.html | xmllint --html --xpath 'string(//a[contains(text(),"linux-x64.tar.gz")]/@data-file)' - 2> /dev/null | cut -d'/' -f8)
+BUNDLE_PREFIX="243727"
+DL_LINK="https://javadl.oracle.com/webapps/download/AutoDL?BundleId=$BUNDLE_PREFIX""_$BUNDLE_ID"
 
-LATEST_VERSION=$(echo $HTML_DATA | cut -d' ' -f3)
-LATEST_UPDATE=$(echo $HTML_DATA | cut -d' ' -f5)
+LATEST_VERSION=$(echo $HTML_DATA | cut -d' ' -f5 | cut -d'u' -f1 )
+LATEST_UPDATE=$(echo $HTML_DATA | cut -d' ' -f5  | cut -d'u' -f2 )
+
+if [ -z "$LATEST_VERSION" -o -z "$LATEST_UPDATE" ]; then
+	echo "ERROR: Unable to find latest version of Java VM!" >&2
+	exit
+fi
 
 CURRENT_VERSION=0
 CURRENT_UPDATE=0
