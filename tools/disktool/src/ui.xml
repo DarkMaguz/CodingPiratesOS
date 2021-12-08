@@ -1,20 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-	<menu id='color-menu'>
-		<section>
-			$menuItems$
-		</section>
-	</menu>
 	<object class='GtkToolbar' id='toolbar'>
 		<property name='visible'>True</property>
 		<property name='can_focus'>False</property>
 		<child>
-			<object class='GtkToolButton' id='toolbutton_newgame'>
-				<property name='label'>New game</property>
+			<object class='GtkToolButton' id='toolbutton_write'>
+				<property name='label'>Write</property>
 				<property name='visible'>True</property>
 				<property name='can_focus'>False</property>
-				<property name='tooltip_text' translatable='yes'>New Game</property>
-				<property name='action_name'>toolbar.newgame</property>
-				<property name='icon_name'>window-new</property>
+				<property name='tooltip_text' translatable='yes'>Write</property>
+				<property name='action_name'>toolbar.write</property>
+				<property name='icon_name'>media-removable</property>
 			</object>
 			<packing>
 				<property name='expand'>False</property>

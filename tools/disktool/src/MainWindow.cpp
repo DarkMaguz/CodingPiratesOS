@@ -6,7 +6,11 @@
  */
 
 #include "MainWindow.h"
+#include "DiskTool.h"
 
+#include <giomm.h>
+
+#include <string>
 #include <iostream>
 
 MainWindow::MainWindow() :
@@ -41,7 +45,7 @@ void MainWindow::buildToolbar(void)
 
   try
   {
-    m_refBuilder->add_from_string(TOOLBAR_BUTTONS);
+    m_refBuilder->add_from_resource("/org/CPOS/DiskTool/ui.xml");
   }
   catch (const Glib::Error& ex)
   {
