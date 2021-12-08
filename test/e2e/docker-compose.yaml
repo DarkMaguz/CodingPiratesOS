@@ -9,7 +9,7 @@ services:
     environment:
       ISOPATH: images/image-to-be-tested.iso
     volumes:
-      - ../images:/usr/app/images:ro
+      - ../../images:/usr/app/images:ro
   test:
     build: .
     depends_on:
