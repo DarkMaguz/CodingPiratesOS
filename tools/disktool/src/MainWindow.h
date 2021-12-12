@@ -8,8 +8,11 @@
 #ifndef SRC_MAINWINDOW_H_
 #define SRC_MAINWINDOW_H_
 
-#include <gtkmm.h>
+#include "DriveTreeView.h"
+#include "DriveDetailBox.h"
+#include "DriveTool.h"
 
+#include <gtkmm.h>
 
 class MainWindow : public Gtk::Window
 {
@@ -17,15 +20,24 @@ class MainWindow : public Gtk::Window
 		MainWindow();
 		virtual ~MainWindow();
 
+	protected:
+		void onDriveSelectChange(void);
+
 	private:
 		void buildToolbar(void);
 		void onToolbarQuit(void);
 
+		DriveTool* m_driveTool;
+
 		Gtk::Box m_mainBox;
-		Gtk::Box m_diskBox;
+		DriveDetailBox m_driveDetailBox;
 
 		Gtk::Toolbar *m_toolbar;
 		Gtk::Statusbar m_statusbar;
+
+		Gtk::Paned m_HPaned;
+		DriveTreeView m_driveTreeView;
+		Gtk::ScrolledWindow m_scrolledWindow;
 
 		Glib::RefPtr<Gtk::Builder> m_refBuilder;
 
