@@ -20,7 +20,6 @@ DriveTreeView::DriveTreeView(DriveTool* driveTool) :
 
 	append_column("Icon", m_Columns.m_col_icon);
 	append_column("Name", m_Columns.m_col_name);
-	//append_column("Drive", m_Columns.m_col_drive);
 
 	onDrivesUpdated();
 
@@ -58,11 +57,9 @@ void DriveTreeView::onDrivesUpdated(void)
 		{
 			auto drive = *it;
 			Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-			Glib::RefPtr<Gio::Icon> icon = drive->get_icon();
 
-			row[m_Columns.m_col_icon] = iconTheme->lookup_icon(icon, 32).load_icon();
-			row[m_Columns.m_col_name] = drive->get_name();
-//			row[m_Columns.m_col_drive] = it - m_driveTool->getDrives().begin();
+			row[m_Columns.m_col_icon] = iconTheme->lookup_icon(drive.icon, 32).load_icon();
+			row[m_Columns.m_col_name] = drive.name;
 		}
 	}
 	catch (std::exception& e)

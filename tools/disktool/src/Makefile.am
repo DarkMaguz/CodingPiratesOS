@@ -3,9 +3,9 @@ bin_PROGRAMS = disktool
 
 EXTRA_CFLAGS = -DGTKMM_DISABLE_DEPRECATED=1 -DGIOMM_DISABLE_DEPRECATED=1 -DSIGPP_DISABLE_DEPRECATED=1 
 
-disktool_SOURCES = main.cpp MainWindow.cpp DriveTool.cpp DriveTreeView.cpp DriveDetailBox.cpp
-disktool_CPPFLAGS = $(GTKMM_CFLAGS) $(GLIBMM_CFLAGS) $(SIGCPP_CFLAGS) $(PARTED_CFLAGS) $(UDISK2_CFLAGS) $(EXTRA_CFLAGS)
-disktool_LDADD = $(GTKMM_LIBS) $(GLIBMM_LIBS) $(SIGCPP_LIBS) $(PARTED_LIBS) $(UDISK2_LIBS)
+disktool_SOURCES = main.cpp MainWindow.cpp DriveTool.cpp DriveTreeView.cpp DriveDetailBox.cpp DriveInfo.cpp
+disktool_CPPFLAGS = $(GTKMM_CFLAGS) $(GLIBMM_CFLAGS) $(SIGCPP_CFLAGS) $(UDISK2_CFLAGS) $(EXTRA_CFLAGS)
+disktool_LDADD = $(GTKMM_LIBS) $(GLIBMM_LIBS) $(SIGCPP_LIBS) $(UDISK2_LIBS)
 
 nodist_disktool_SOURCES = ui_resources.c
 dist_noinst_DATA = ui.gresource.xml ui.xml

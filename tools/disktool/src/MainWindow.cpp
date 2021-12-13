@@ -17,7 +17,7 @@ MainWindow::MainWindow() :
 	m_driveTool(new DriveTool),
 	m_mainBox(Gtk::ORIENTATION_VERTICAL),
 	m_HPaned(Gtk::ORIENTATION_HORIZONTAL),
-	m_driveDetailBox(),
+	m_driveDetailBox(m_driveTool->getDrives().front()),
 	m_toolbar(nullptr),
 	m_driveTreeView(m_driveTool),
 	m_refBuilder(Gtk::Builder::create())

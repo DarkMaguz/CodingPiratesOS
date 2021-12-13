@@ -19,7 +19,6 @@ class DriveTreeView: public Gtk::TreeView
 		virtual ~DriveTreeView();
 
 		uint64_t getSelectedDrive(void);
-		//void setList();
 
 	protected:
 		//Tree model columns:
@@ -34,7 +33,6 @@ class DriveTreeView: public Gtk::TreeView
 				}
 				Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf>> m_col_icon;
 				Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-//				Gtk::TreeModelColumn<uint64_t> m_col_drive;
 		};
 
 		ModelColumns m_Columns;

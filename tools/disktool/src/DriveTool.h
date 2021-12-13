@@ -8,6 +8,8 @@
 #ifndef SRC_DRIVETOOL_H_
 #define SRC_DRIVETOOL_H_
 
+#include "DriveInfo.h"
+
 #include <iostream>
 #include <vector>
 
@@ -15,25 +17,16 @@
 #include <giomm.h>
 #include <sigc++/sigc++.h>
 
-//enum t_changeType {
-//	CHANGE,
-//	CONNECT,
-//	DISCONNECT,
-//	ADD,
-//	REMOVE,
-//	PRE_UNMOUNT,
-//	UNKNOWN
-//};
-
-struct DriveInfo
+struct __DriveInfo
 {
+		Glib::RefPtr<Gio::Drive> drive;
 		std::string name;
-		std::string icon;
-		bool hasVolumes;
+		Glib::RefPtr<Gio::Icon> icon;
 		bool isRemovable;
+		bool hasVolumes;
 };
 
-typedef std::vector<Glib::RefPtr<Gio::Drive>> t_drivesList;
+typedef std::vector<DriveInfo> t_drivesList;
 
 class DriveTool
 {
@@ -47,10 +40,6 @@ class DriveTool
 
 	protected:
 		void onDeviceEvent(const Glib::RefPtr<Glib::Interface>& device);
-
-//		void onDriveChanged(const Glib::RefPtr<Gio::Drive>& drive, const t_changeType& changeType);
-//		void onMountChanged(const Glib::RefPtr<Gio::Mount>& mount, const t_changeType& changeType);
-//		void onVolumeChanged(const Glib::RefPtr<Gio::Volume>& volume, const t_changeType& changeType);
 
 	private:
 		void updateDrives(void);

@@ -5,13 +5,13 @@
  *      Author: magnus
  */
 
-#include <DriveTool.h>
+#include "DriveTool.h"
 #include <iostream>
 
 #include <giomm.h>
 
 DriveTool::DriveTool() :
-		m_gvm(g_volume_monitor_get()) // Bug fix for getting signals to work.
+	m_gvm(g_volume_monitor_get()) // Bug fix for getting signals to work.
 {
 	auto vm = Gio::VolumeMonitor::get();
 
@@ -59,26 +59,8 @@ void DriveTool::updateDrives(void)
 	m_drives.clear();
 	for (auto drive : drives)
 	{
-		m_drives.push_back(drive);
-	}
-
-	//m_drives = Gio::VolumeMonitor::get()->get_connected_drives();
-	/*auto vm = Gio::VolumeMonitor::get();
-	auto drives = vm->get_connected_drives();
-
-	m_drives.clear();
-	for (auto drive : drives)
-	{
-		DriveInfo di;
-		di.name = drive->get_name();
-		di.icon = drive->get_icon()->to_string();
-		di.hasVolumes = drive->has_volumes();
-		di.isRemovable = drive->is_removable();
-		std::cout << "name: " << di.name << std::endl;
-		std::cout << "icon: " << di.icon << std::endl;
-		std::cout << "hasVolumes: " << di.hasVolumes << std::endl;
-		std::cout << "isRemovable: " << di.isRemovable << std::endl;
+		DriveInfo di(drive);
 		m_drives.push_back(di);
-	}*/
+	}
 
 }
