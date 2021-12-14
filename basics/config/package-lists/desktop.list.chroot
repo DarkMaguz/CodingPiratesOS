@@ -5,3 +5,6 @@ task-danish
 gdm3
 task-ssh-server
 task-laptop
+dconf-editor
+gnome-tweaks
+gnome-shell-extensions
