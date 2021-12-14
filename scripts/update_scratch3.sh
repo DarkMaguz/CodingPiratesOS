@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # This has not been tested properly yet!
-exit
+#exit
 
 DIR=$(dirname `realpath $0`)
 
@@ -54,8 +54,13 @@ fi
 
 # If we have cloned...
 if [ "$SPLASH_SCREEN_STATE" = "cloned" ]; then
+  # Install icon.
+  cp -f $DIR/../data/Scratch3/scratch3.png $INSTALL_PATH/scratch3.png
+  ln -s $INSTALL_PATH/scratch3.png /usr/share/icons/hicolor/48x48/apps/scratch3.png
+  
   # Add Gnome desktop entry.
   xdg-desktop-menu install --novendor $DIR/../data/Scratch3/Scratch3.desktop
+  #cp -f $DIR/../data/Scratch3/Scratch3.desktop /usr/share/applications/Scratch3.desktop
 
   # Install scratch3.sh.
   cp $DIR/../data/Scratch3/scratch3.sh $INSTALL_PATH/scratch3.sh
