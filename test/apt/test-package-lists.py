@@ -8,12 +8,15 @@ import common
 
 
 def buildPackageList():
-  pkgList = ()
+  pkgList = ""
   for file in os.listdir(common.pkgListPath):
     if file.endswith('list.chroot'):
-      with open(os.path.join(common.pkgListPath, file), "rb") as pkgListFile:
-        pkgList[file] = pkgListFile.read().split()
-  return pkgList
+      with open(os.path.join(common.pkgListPath, file), 'rt') as pkgListFile:
+        for line in pkgListFile:
+          if line.startswith('!') or line.strip() == '':
+            continue
+          pkgList += line.strip() + ' '
+  return pkgList[:-1]
 
 
 def buildVolumes():
@@ -46,19 +49,19 @@ if __name__ == '__main__':
   # for v in volumes:
   #   print('%s: %s' % (v, volumes[v]))
   # exit()
-  keyStr = ""
+  keyStr = ''
   for key in keys:
-    keyStr += key + ","
+    keyStr += key + ','
   keyStr = keyStr[:-1]
   client = docker.from_env()
-  logs = ""
+  logs = ''
   exitCode = 0
   try:
     container = client.containers.run('darkmagus/apt-test',
       command='./docker-run.sh',
       volumes=volumes,
       detach=True,
-      environment={'KEYS': keyStr})
+      environment={'KEYS': keyStr, 'PKG_LIST': buildPackageList()})
     exitCode = container.wait()["StatusCode"]
     logs = container.logs().decode()
   except docker.errors.ContainerError as e:
