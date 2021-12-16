@@ -4,16 +4,7 @@ import os
 import docker
 import multiprocessing as mp
 
-
-verbose = False
-archivesPath = os.path.abspath('../../basics/config/archives/')
-
-
-def buildTestImage():
-  client = docker.from_env()
-  with open('Dockerfile', 'rb') as dockerFile:
-    client.images.build(fileobj=dockerFile, tag='darkmagus/apt-test')
-
+import common
 
 def runDocker(listFile, keyFile):
   client = docker.from_env()
@@ -56,7 +47,7 @@ def joinProcesses(processes):
 
 def printResult(result):
   if not result[1][0]:
-    if not verbose:
+    if not common.verbose:
       return
   lines = str(result[1][1]).split('\n')
   status = 'failed' if result[1][0] else 'passed'
@@ -74,14 +65,14 @@ def hasFailedRepo(queue):
 
 
 if __name__ == '__main__':
-  buildTestImage()
+  common.buildTestImage()
   processes = []
   queue = mp.Queue()
-  for file in os.listdir(archivesPath):
+  for file in os.listdir(common.archivesPath):
     if file.endswith('list'):
       repoName = file.removesuffix('.list')
-      listFile = os.path.join(archivesPath, file)
-      keyFile = os.path.join(archivesPath, repoName + '.key')
+      listFile = os.path.join(common.archivesPath, file)
+      keyFile = os.path.join(common.archivesPath, repoName + '.key')
       p = mp.Process(target=runTest, args=(repoName, listFile, keyFile, queue))
       p.start()
       processes.append(p)
