@@ -1,0 +1,67 @@
+#!/bin/python3
+
+import os
+import docker
+import multiprocessing as mp
+
+import common
+
+
+def buildPackageList():
+  pkgList = ()
+  for file in os.listdir(common.pkgListPath):
+    if file.endswith('list.chroot'):
+      with open(os.path.join(common.pkgListPath, file), "rb") as pkgListFile:
+        pkgList[file] = pkgListFile.read().split()
+  return pkgList
+
+
+def buildVolumes():
+  volumes = {}
+  KEYS = []
+  for file in os.listdir(common.archivesPath):
+    volumes[os.path.join(common.archivesPath, file)] = {
+      'bind': os.path.join('/etc/apt/sources.list.d/', file),
+      'mode': 'ro'
+    }
+    if file.endswith('.key'):
+      KEYS.append(os.path.join('/etc/apt/sources.list.d/', file))
+  volumes[os.path.abspath('docker-run-pkg-list.sh')] = {
+    'bind': '/docker-run.sh',
+    'mode': 'ro'
+  }
+  return [volumes, KEYS]
+
+
+def testPkgLists():
+  pkgList = buildPackageList()
+
+
+if __name__ == '__main__':
+  common.buildTestImage()
+  #testPkgLists()
+  vk = buildVolumes()
+  volumes = vk[0]
+  keys = vk[1]
+  # for v in volumes:
+  #   print('%s: %s' % (v, volumes[v]))
+  # exit()
+  keyStr = ""
+  for key in keys:
+    keyStr += key + ","
+  keyStr = keyStr[:-1]
+  client = docker.from_env()
+  logs = ""
+  exitCode = 0
+  try:
+    container = client.containers.run('darkmagus/apt-test',
+      command='./docker-run.sh',
+      volumes=volumes,
+      detach=True,
+      environment={'KEYS': keyStr})
+    exitCode = container.wait()["StatusCode"]
+    logs = container.logs().decode()
+  except docker.errors.ContainerError as e:
+    print("error:", str(e))
+  else:
+    print("output:", logs)
