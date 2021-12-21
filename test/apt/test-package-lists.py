@@ -2,7 +2,6 @@
 
 import os
 import docker
-import multiprocessing as mp
 
 import common
 
@@ -42,13 +41,9 @@ def testPkgLists():
 
 if __name__ == '__main__':
   common.buildTestImage()
-  #testPkgLists()
   vk = buildVolumes()
   volumes = vk[0]
   keys = vk[1]
-  # for v in volumes:
-  #   print('%s: %s' % (v, volumes[v]))
-  # exit()
   keyStr = ''
   for key in keys:
     keyStr += key + ','
@@ -67,4 +62,5 @@ if __name__ == '__main__':
   except docker.errors.ContainerError as e:
     print("error:", str(e))
   else:
-    print("output:", logs)
+    if verbose:
+      print("output:", logs)
