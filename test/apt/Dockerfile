@@ -1,3 +1,3 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get -y install gnupg ca-certificates
+RUN apt-get update && apt-get -y install gnupg ca-certificates wget curl nano
