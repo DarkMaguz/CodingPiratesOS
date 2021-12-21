@@ -1,2 +1,1 @@
-deb https://download.virtualbox.org/virtualbox/debian buster contrib
-
+deb https://download.virtualbox.org/virtualbox/debian bullseye contrib
