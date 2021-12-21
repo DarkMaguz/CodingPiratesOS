@@ -18,8 +18,8 @@ else
 fi
 
 # Fix bug missing debian-cd pakage.
-rm /usr/share/live/build/data/debian-cd/buster
-ln -s /usr/share/debian-cd/data/buster /usr/share/live/build/data/debian-cd/buster
+rm /usr/share/live/build/data/debian-cd/bullseye
+ln -s /usr/share/debian-cd/data/bullseye /usr/share/live/build/data/debian-cd/bullseye
 
 # Fix bug in debootstrap, when mounting /proc in docker.
 patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.patch

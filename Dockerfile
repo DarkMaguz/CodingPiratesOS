@@ -1,4 +1,4 @@
-# Base the image off of Debian buster.
+# Base the image off of Debian bullseye.
 FROM debian:bullseye
 
 # Getting the prerequisite packages.

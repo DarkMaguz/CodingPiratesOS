@@ -18,7 +18,7 @@ lb config noauto \
           --debian-installer live \
           --debian-installer-gui false \
           --debug \
-          --distribution buster \
+          --distribution bullseye \
           --iso-application "CodingPiratesOS Live" \
           --iso-preparer "magnus@darkmagus.dk" \
           --iso-publisher "magnus@darkmagus.dk" \

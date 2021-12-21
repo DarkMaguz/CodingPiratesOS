@@ -1,5 +1,5 @@
-# Base the image off of Debian buster.
-FROM debian:buster-slim
+# Base the image off of Debian bullseye.
+FROM debian:bullseye-slim
 
 # Getting the prerequisite packages.
 RUN apt-get update && apt-get upgrade -y
