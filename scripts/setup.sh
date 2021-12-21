@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+exit
+# DON'T USE THIS SCRIPT!
+
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
         echo "Please run as root"
