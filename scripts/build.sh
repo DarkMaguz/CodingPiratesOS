@@ -39,23 +39,16 @@ if [ ! -e live-image-amd64.hybrid.iso ]; then
   echo "#############"
   echo "## FAILED! ##"
   echo "#############"
-  exit
-fi
-
-if [ ! -f ../data/build-version.txt ]; then
-	echo 1000 >../data/build-version.txt
+  exit 1
 fi
 
 read line <../data/VERSION
 MAJOR=$(echo $line | cut -d "." -f1)
 MINOR=$(echo $line | cut -d "." -f2)
-BUILD=$(echo $line | cut -d "." -f3)
-build_version="$MAJOR.$MINOR.$(($BUILD+1))"
+BUILD_VERSION="$MAJOR.$MINOR.$BUILD_NUMBER"
 
-#sudo chown magnus:magnus live-image-amd64.hybrid.iso
-mv live-image-amd64.hybrid.iso "../images/live-image-amd64-$build_version.hybrid.iso"
+mv live-image-amd64.hybrid.iso "../images/cpos-live-amd64-$BUILD_VERSION.iso"
+cp build.log "../images/cpos-live-amd64-$BUILD_VERSION.build.log"
 
-#sudo chown magnus:magnus build.log
-cp build.log "../images/live-image-amd64-$build_version.build.log"
-
-echo $build_version >../data/VERSION
+# Hand over ownership of generated/modified data to the proper owner.
+chown -R $BUILD_UID:$BUILD_UID ../build ../images
