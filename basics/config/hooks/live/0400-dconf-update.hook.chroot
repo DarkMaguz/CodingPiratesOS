@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+# Rebuild dconf db to apply dark theme and other changes.
+dconf update
