@@ -62,5 +62,5 @@ if __name__ == '__main__':
   except docker.errors.ContainerError as e:
     print("error:", str(e))
   else:
-    if verbose:
+    if common.verbose:
       print("output:", logs)
