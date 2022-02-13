@@ -1,0 +1,2 @@
+[org/gnome/shell]
+favorite-apps=['Firefox.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop', 'atom.desktop', 'appimagekit-unityhub.desktop', 'arduino-arduinoide.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'kicad.desktop', 'gnome-system-monitor.desktop', 'discord.desktop', 'steam.desktop']

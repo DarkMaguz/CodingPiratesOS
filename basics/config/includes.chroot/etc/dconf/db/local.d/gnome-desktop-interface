@@ -1,0 +1,5 @@
+[org/gnome/desktop/interface]
+gtk-theme='Adwaita-dark'
+clock-show-date=true
+clock-show-weekday=true
+icon-theme='Adwaita'
