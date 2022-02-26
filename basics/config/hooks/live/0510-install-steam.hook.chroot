@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+echo steam steam/question select "I AGREE" | debconf-set-selections
+echo steam steam/license note '' | debconf-set-selections
+apt-get install -y steam steamcmd
