@@ -1,22 +1,20 @@
 #!/bin/sh -e
 
-CP_USERNAME=pirat
-CP_HOSTNAME=codingpirates
-
 lb config noauto \
           --apt apt \
           --apt-indices true \
           --apt-recommends true \
+          --apt-source-archives false \
           --architectures amd64 \
           --binary-images iso-hybrid \
           --binary-filesystem fat32 \
-          --bootappend-live "boot=live components autologin quiet noeject username=${CP_USERNAME} hostname=${CP_HOSTNAME} locales=da_DK.UTF-8 keyboard-layouts=dk" \
+          --bootappend-live "boot=live components autologin noeject " \
           --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl,gpg,gnupg2,software-properties-common,curl" \
           --cache true \
           --checksums none \
           --compression none \
-          --debian-installer live \
-          --debian-installer-gui false \
+          --color \
+          --debian-installer none \
           --debug \
           --distribution bullseye \
           --iso-application "CodingPiratesOS Live" \
