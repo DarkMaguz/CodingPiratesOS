@@ -1,5 +1,9 @@
 #!/bin/sh -e
 
+echo "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+echo "Starting build nr: $BUILD_NUMBER"
+echo "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+
 # Ensure that we have superpowers.
 if [ $(id -u) != 0 ]; then
   echo "Please run as root"
