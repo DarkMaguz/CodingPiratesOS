@@ -49,6 +49,7 @@ uint64_t DriveTreeView::getSelectedDrive(void)
 
 void DriveTreeView::onDrivesUpdated(void)
 {
+	std::cout << "onDrivesUpdated" << std::endl;
 	try
 	{
 		auto iconTheme = Gtk::IconTheme::create();

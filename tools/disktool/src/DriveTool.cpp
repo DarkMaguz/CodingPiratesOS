@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include <giomm.h>
+#include <sigc++/sigc++.h>
 
 DriveTool::DriveTool() :
 	m_gvm(g_volume_monitor_get()) // Bug fix for getting signals to work.

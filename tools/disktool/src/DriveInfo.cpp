@@ -77,6 +77,7 @@ void DriveInfo::PropeDrive(void)
 	if (m_devicePath.empty())
 		return;
 
+	path = m_devicePath;
 	std::cout << "Analyzing device: '" << m_devicePath << "'" << std::endl;
 
 	GError *error = nullptr;

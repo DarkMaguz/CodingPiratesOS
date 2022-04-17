@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-<gresource prefix="/org/CPOS/DiskTool">
-<file preprocess="xml-stripblanks">ui.xml</file>
-</gresource>
+  <gresource prefix="/org/CPOS/DiskTool">
+    <file preprocess="xml-stripblanks">ui/Toolbar.glade</file>
+    <file preprocess="xml-stripblanks">ui/DriveDetailBox.glade</file>
+    <file preprocess="xml-stripblanks">ui/AssistPageSource.glade</file>
+    <file preprocess="xml-stripblanks">ui/AssistPageConfig.glade</file>
+    <file preprocess="xml-stripblanks">ui/AssistPageConfirm.glade</file>
+    <file preprocess="xml-stripblanks">ui/AssistPageProgress.glade</file>
+    <file preprocess="xml-stripblanks">ui/AssistPageSummary.glade</file>
+  </gresource>
 </gresources>

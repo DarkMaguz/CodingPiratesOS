@@ -32,6 +32,7 @@ class DriveInfo
 		std::string revision;
 		std::string serial;
 		std::string uuid;
+		std::string path;
 
 	private:
 		void PropeDrive(void);

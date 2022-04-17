@@ -157,3 +157,6 @@ Makefile
 *.su
 *.idb
 *.pdb
+
+libtool
+*~

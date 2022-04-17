@@ -11,8 +11,12 @@
 #include "DriveTreeView.h"
 #include "DriveDetailBox.h"
 #include "DriveTool.h"
+#include "ImageDownloader.h"
+
+#include <thread>
 
 #include <gtkmm.h>
+
 
 class MainWindow : public Gtk::Window
 {
@@ -25,7 +29,9 @@ class MainWindow : public Gtk::Window
 
 	private:
 		void buildToolbar(void);
+		void onToolbarWrite(void);
 		void onToolbarQuit(void);
+		int progress(double a, double b, double c, double d);
 
 		DriveTool* m_driveTool;
 
@@ -40,6 +46,9 @@ class MainWindow : public Gtk::Window
 		Gtk::ScrolledWindow m_scrolledWindow;
 
 		Glib::RefPtr<Gtk::Builder> m_refBuilder;
+		//ImageDownloader m_id;
+
+		std::thread* m_idThread;
 
 };
 
