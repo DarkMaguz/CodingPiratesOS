@@ -14,7 +14,7 @@ docker run -t \
   -v $PWD/basics:/usr/app/basics:ro \
   -v $PWD/data:/usr/app/data:ro \
   -v $PWD/scripts:/usr/app/scripts:ro \
-  -e BUILD_NUMBER=${BUILD_NUMBER:=999} \
+  -e BUILD_NUMBER=${BUILD_NUMBER:=$(date "+%s")} \
   -e BUILD_UID=$UID \
   -e CI=${CI:=false} \
   --name="CodingPiratesOS$1" \
