@@ -27,6 +27,7 @@ patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.pa
 # Debug skip compression of squashFS.
 #patch /usr/lib/live/build/binary_rootfs < data/patch/binary_rootfs.patch
 
+rm -rf build/config/
 # Copy config files to build dir.
 cp -r -u basics/* build/
 
