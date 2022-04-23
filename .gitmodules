@@ -1,0 +1,3 @@
+[submodule "tools/cpos-disktool"]
+	path = tools/cpos-disktool
+	url = git@github.com:DarkMaguz/cpos-disktool.git
