@@ -159,4 +159,12 @@ Makefile
 *.pdb
 
 libtool
+
+# Temp Glade files
 *~
+
+# Test binary
+tests/test
+
+# Generated UI file
+src/ui_resources.c
