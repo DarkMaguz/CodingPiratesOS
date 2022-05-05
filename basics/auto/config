@@ -8,7 +8,7 @@ lb config noauto \
           --architectures amd64 \
           --binary-images iso-hybrid \
           --binary-filesystem fat32 \
-          --bootappend-live "boot=live components autologin noeject " \
+          --bootappend-live "boot=live components autologin noeject persistence" \
           --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl,gpg,gnupg2,software-properties-common,curl" \
           --cache true \
           --checksums none \
