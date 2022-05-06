@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+echo "LABEL=persistence /media/persistence ext4 defaults 0 0" >> /etc/fstab
