@@ -2,3 +2,15 @@
 nano
 wget
 ufw
+udev
+network-manager
+network-manager-openvpn-gnome
+wpasupplicant
+build-essential
+task-laptop
+tar
+bzip2
+unrar
+unzip
+git
+gitg
