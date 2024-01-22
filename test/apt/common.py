@@ -3,8 +3,10 @@ import docker
 
 
 verbose = False
+verbose = True
 archivesPath = os.path.abspath('../../basics/config/archives/')
 pkgListPath = os.path.abspath('../../basics/config/package-lists/')
+extraPkgPath = os.path.abspath('../../basics/config/packages.chroot/')
 
 
 def buildTestImage():
