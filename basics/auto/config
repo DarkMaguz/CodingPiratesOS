@@ -15,7 +15,6 @@ lb config noauto \
           --compression none \
           --color \
           --debian-installer none \
-          --debug \
           --distribution bullseye \
           --iso-application "CodingPiratesOS Live" \
           --iso-preparer "magnus@darkmagus.dk" \
