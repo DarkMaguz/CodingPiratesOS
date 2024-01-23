@@ -5,3 +5,4 @@ __pycache__/
 *.py[cod]
 
 basics/**/disabled/
+basics/config/packages.chroot/*
