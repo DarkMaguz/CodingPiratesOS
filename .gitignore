@@ -6,3 +6,5 @@ __pycache__/
 
 basics/**/disabled/
 basics/config/packages.chroot/*
+
+/**/tmp/
