@@ -23,8 +23,8 @@ lb config noauto \
           --iso-volume "CodingPiratesOS-live-amd64" \
           --linux-packages "linux-image linux-headers" \
           --memtest none \
-          --mirror-bootstrap http://ftp.dk.debian.org/debian/ \
-          --mirror-binary http://ftp.dk.debian.org/debian/ \
+          --mirror-bootstrap http://mirror.one.com/debian/ \
+          --mirror-binary http://mirror.one.com/debian/ \
           --mode debian \
           --security true \
           --win32-loader true \
