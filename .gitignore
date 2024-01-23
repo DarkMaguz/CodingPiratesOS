@@ -5,6 +5,6 @@ __pycache__/
 *.py[cod]
 
 basics/**/disabled/
-basics/config/packages.chroot/*
+basics/config/packages.chroot/*.deb
 
 /**/tmp/
