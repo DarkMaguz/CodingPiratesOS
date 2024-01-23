@@ -3,8 +3,6 @@
 # Download extra deb packages.
 python3 scripts/get_extra_pkgs.py
 
-return 0
-
 if [ $(docker ps -a -f "name=/CodingPiratesOS$1$" -q) ]; then
   docker rm -f CodingPiratesOS$1
 fi
