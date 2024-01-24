@@ -10,7 +10,10 @@ import requests
 targets = [
   'http://ftp.dk.debian.org/debian/pool/main/i/icu/libicu63_63.1-6+deb10u3_amd64.deb'
 ]
-extraPkgPath = os.path.abspath('basics/config/packages.chroot/')
+
+# Get source directory for this script.
+DIR = os.path.dirname(os.path.abspath(__file__))
+extraPkgPath = os.path.abspath(DIR + '/../basics/config/packages.chroot/')
 
 for url in targets:
   filename = url.split('/')[-1]
