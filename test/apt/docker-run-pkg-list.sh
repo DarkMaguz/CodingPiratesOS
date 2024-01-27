@@ -1,15 +1,11 @@
 #!/bin/sh -e
 
-dpkg -i $EXTRA_PACKAGES
-apt-get install -f -y
-
-echo "$KEYS" | tr ',' '\n' | while read key; do
-  apt-key add $key
-done
+# Since EXTRA_PACKAGES may include dependencies, they should be installed first .
+if [ -n "$EXTRA_PACKAGES" ]; then
+  dpkg -i $EXTRA_PACKAGES
+  apt-get install -f -y
+fi
 
 apt-get update
 
-# echo "$PKG_LIST" | tr ',' '\n' | while read pkg; do
-#   apt-get install --dry-run $pkg
-# done
-apt-get install -y --dry-run $PKG_LIST
+apt-get install -y --no-install-recommends $PKG_LIST

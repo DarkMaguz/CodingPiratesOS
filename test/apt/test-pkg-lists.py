@@ -18,28 +18,6 @@ def buildPackageList():
   return pkgList[:-1]
 
 
-def buildVolumes():
-  volumes = {}
-  KEYS = []
-  for file in os.listdir(common.archivesPath):
-    volumes[os.path.join(common.archivesPath, file)] = {
-      'bind': os.path.join('/etc/apt/sources.list.d/', file),
-      'mode': 'ro'
-    }
-    if file.endswith('.key'):
-      KEYS.append(os.path.join('/etc/apt/sources.list.d/', file))
-  volumes[os.path.abspath('docker-run-pkg-list.sh')] = {
-    'bind': '/docker-run.sh',
-    'mode': 'ro'
-  }
-  # Add bind path to extra deb packages
-  volumes[common.extraPkgPath] = {
-    'bind': '/extra/',
-    'mode': 'ro'
-  }
-  return [volumes, KEYS]
-
-
 def buildExtraPackagesList():
   extraPackages = ""
   for file in os.listdir(common.extraPkgPath):
@@ -47,15 +25,18 @@ def buildExtraPackagesList():
       extraPackages += '/extra/' + file + ' '
   return extraPackages
 
+
+def getArchives():
+  archives = []
+  for file in os.listdir(common.archivesPath):
+    if file.endswith('.list'):
+      archives.append(file.removesuffix('.list'))
+  return archives
+
+
 if __name__ == '__main__':
   common.buildTestImage()
-  vk = buildVolumes()
-  volumes = vk[0]
-  keys = vk[1]
-  keyStr = ''
-  for key in keys:
-    keyStr += key + ','
-  keyStr = keyStr[:-1]
+  volumes = common.buildVolumes('docker-run-pkg-list.sh', getArchives())
   client = docker.from_env()
   logs = ''
   exitCode = 0
@@ -65,7 +46,6 @@ if __name__ == '__main__':
       volumes=volumes,
       detach=True,
       environment={
-        'KEYS': keyStr,
         'PKG_LIST': buildPackageList(),
         'EXTRA_PACKAGES': buildExtraPackagesList()
       })

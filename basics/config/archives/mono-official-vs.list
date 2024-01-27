@@ -1,1 +1,1 @@
-deb https://download.mono-project.com/repo/debian vs-buster main
+deb [arch=amd64] https://download.mono-project.com/repo/debian vs-buster main

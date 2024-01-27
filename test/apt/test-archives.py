@@ -1,33 +1,27 @@
 #!/bin/python3
 
 import os
+
 import docker
 import multiprocessing as mp
 
 import common
 
-def runDocker(listFile, keyFile):
+
+def runDocker(archive: str):
   client = docker.from_env()
-  volumes = {
-    listFile: {
-      'bind': '/etc/apt/sources.list.d/test.list',
-      'mode': 'ro'
-    },
-    keyFile: {
-      'bind': '/etc/apt/sources.list.d/test.key',
-      'mode': 'ro'
-    },
-    os.path.abspath('docker-run.sh'): {
-      'bind': '/docker-run.sh',
-      'mode': 'ro'
-    }
-  }
+  volumes = common.buildVolumes('docker-run-archives.sh', [archive])
   logs = ""
   exitCode = 0
   try:
-    container = client.containers.run('darkmagus/apt-test', command='./docker-run.sh', volumes=volumes, detach=True)
+    container = client.containers.run(
+      'darkmagus/apt-test',
+      volumes=volumes,
+      detach=True
+      )
     exitCode = container.wait()["StatusCode"]
     logs = container.logs().decode()
+    container.remove()
   except docker.errors.ContainerError as e:
     return [True, str(e)]
   else:
@@ -35,9 +29,10 @@ def runDocker(listFile, keyFile):
     return [hasError, logs]
 
 
-def runTest(repoName, listFile, keyFile, queue):
-  assert os.path.exists(keyFile)
-  queue.put([repoName, runDocker(listFile, keyFile)])
+def runTest(archive: str, queue: mp.Queue):
+  assert os.path.exists(os.path.join(common.archivesPath, archive + '.key'))
+  assert os.path.exists(os.path.join(common.archivesPath, archive + '.list'))
+  queue.put([archive, runDocker(archive)])
 
 
 def joinProcesses(processes):
@@ -70,10 +65,8 @@ if __name__ == '__main__':
   queue = mp.Queue()
   for file in os.listdir(common.archivesPath):
     if file.endswith('list'):
-      repoName = file.removesuffix('.list')
-      listFile = os.path.join(common.archivesPath, file)
-      keyFile = os.path.join(common.archivesPath, repoName + '.key')
-      p = mp.Process(target=runTest, args=(repoName, listFile, keyFile, queue))
+      archive = file.removesuffix('.list')
+      p = mp.Process(target=runTest, args=(archive, queue))
       p.start()
       processes.append(p)
   joinProcesses(processes)

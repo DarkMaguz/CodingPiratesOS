@@ -8,7 +8,7 @@ import requests
 
 
 targets = [
-  'http://ftp.dk.debian.org/debian/pool/main/i/icu/libicu63_63.1-6+deb10u3_amd64.deb'
+  # 'http://ftp.dk.debian.org/debian/pool/main/i/icu/libicu63_63.1-6+deb10u3_amd64.deb'
 ]
 
 # Get source directory for this script.

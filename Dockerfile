@@ -1,5 +1,5 @@
-# Base the image off of Debian bullseye.
-FROM debian:bullseye
+# Base the image off of Debian bookworm.
+FROM debian:bookworm
 
 # Getting the prerequisite packages.
 RUN apt-get update && apt-get upgrade -y

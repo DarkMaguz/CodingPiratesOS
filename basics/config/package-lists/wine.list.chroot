@@ -1,4 +1,3 @@
-libasound2-plugins:i386
-wine-staging-i386
+wine-staging:i386
 winehq-staging
 winetricks

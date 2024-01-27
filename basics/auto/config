@@ -5,17 +5,17 @@ lb config noauto \
           --apt-indices true \
           --apt-recommends true \
           --apt-source-archives false \
-          --architectures amd64 \
+          --architectures amd64 i386 \
           --binary-images iso-hybrid \
           --binary-filesystem fat32 \
           --bootappend-live "boot=live components autologin noeject" \
-          --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl,gpg,gnupg2,software-properties-common,curl" \
+          --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
           --cache true \
           --checksums none \
           --compression none \
           --color \
           --debian-installer none \
-          --distribution bullseye \
+          --distribution bookworm \
           --iso-application "CodingPiratesOS Live" \
           --iso-preparer "magnus@darkmagus.dk" \
           --iso-publisher "magnus@darkmagus.dk" \
@@ -27,7 +27,7 @@ lb config noauto \
           --mode debian \
           --security true \
           --win32-loader true \
-          --archive-areas "main contrib non-free" \
+          --archive-areas "main contrib non-free non-free-firmware" \
           --firmware-chroot true \
           ${@}
 

@@ -1,1 +1,1 @@
-deb https://download.virtualbox.org/virtualbox/debian bullseye contrib
+deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bookworm contrib
