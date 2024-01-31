@@ -2,4 +2,4 @@
 
 set -e
 
-echo "yes" >> ${HOME}/.config/gnome-initial-setup-done
+echo "yes" > ${HOME}/.config/gnome-initial-setup-done
