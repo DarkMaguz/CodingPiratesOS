@@ -5,3 +5,6 @@ set -e
 update-alternatives --set x-www-browser /usr/bin/brave-browser-stable
 update-alternatives --set gnome-www-browser /usr/bin/brave-browser-stable
 
+sed 's/\<firefox-esr\.desktop\>/brave-browser.desktop/' \
+    /usr/share/applications/gnome-mimeapps.list \
+    > /etc/xdg/gnome-mimeapps.list
