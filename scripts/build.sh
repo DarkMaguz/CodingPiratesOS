@@ -22,14 +22,11 @@ else
 fi
 
 # Fix bug missing debian-cd pakage.
-rm /usr/share/live/build/data/debian-cd/bullseye
-ln -s /usr/share/debian-cd/data/bullseye /usr/share/live/build/data/debian-cd/bullseye
+rm /usr/share/live/build/data/debian-cd/bookworm
+ln -s /usr/share/debian-cd/data/bookworm /usr/share/live/build/data/debian-cd/bookworm
 
 # Fix bug in debootstrap, when mounting /proc in docker.
 patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.patch
-
-# Debug skip compression of squashFS.
-#patch /usr/lib/live/build/binary_rootfs < data/patch/binary_rootfs.patch
 
 rm -rf build/config/
 # Copy config files to build dir.
