@@ -3,6 +3,9 @@
 # Download extra deb packages.
 python3 scripts/get_extra_pkgs.py
 
+# Download vscode extensions.
+python3 scripts/get_vscode_extensions.py
+
 if [ $(docker ps -a -f "name=/CodingPiratesOS$1$" -q) ]; then
   docker rm -f CodingPiratesOS$1
 fi
