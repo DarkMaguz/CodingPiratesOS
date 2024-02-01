@@ -1,6 +1,6 @@
 distro
-build
-images
+/build/
+/images/
 __pycache__/
 *.py[cod]
 
