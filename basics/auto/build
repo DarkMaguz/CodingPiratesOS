@@ -2,4 +2,10 @@
 
 set -e
 
+# Copy certificates to chroot if any exist.
+if [ -n "$(ls config/certs/)" ]; then
+  mkdir -p chroot/usr/share/ca-certificates
+  cp config/certs/* chroot/usr/share/ca-certificates/
+fi
+
 lb build noauto "${@}" 2>&1 | tee build.log

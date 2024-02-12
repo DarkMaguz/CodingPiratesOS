@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  proxy:
+    image: darkmagus/cpos-proxy
+    build: .
+    volumes:
+      - ./etc/ssl/openssl.cnf:/etc/ssl/openssl.cnf:ro
+      - ./etc/squid:/etc/squid/:ro
+      - ./cache:/var/spool/squid:rw
+      - ./log:/var/log:rw
+    networks:
+      - "cpos"
+
+networks:
+  cpos:
+    name: cpos
+    driver: bridge
