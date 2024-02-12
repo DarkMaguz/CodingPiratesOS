@@ -1,3 +1,4 @@
 cache/
 etc/squid/certs/*.key
+etc/squid/certs/*.crt
 log/

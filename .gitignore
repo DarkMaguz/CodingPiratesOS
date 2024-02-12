@@ -5,5 +5,6 @@ __pycache__/
 
 /**/disabled/
 basics/config/packages.chroot/*.deb
+basics/config/apt/apt.conf
 
 /**/tmp/
