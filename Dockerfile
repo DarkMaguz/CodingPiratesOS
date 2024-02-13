@@ -16,7 +16,7 @@ RUN apt-get install -y live-build debian-cd ca-certificates
 RUN mkdir -p /tmp/proxy-certs
 ADD ./proxy/etc/squid/certs/*.crt /tmp/proxy-certs/
 RUN ls /tmp/proxy-certs/ | tr -d ' ' >> /etc/ca-certificates.conf
-RUN mv /tmp/proxy-certs/* /usr/share/ca-certificates/
+RUN if [ -n "$(ls /tmp/proxy-certs/)" ]; then mv /tmp/proxy-certs/* /usr/share/ca-certificates/; fi
 RUN rm -rf /tmp/proxy-certs
 RUN update-ca-certificates
 
