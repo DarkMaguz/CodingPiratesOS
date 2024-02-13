@@ -42,9 +42,9 @@ if __name__ == '__main__':
   exitCode = 0
   try:
     container = client.containers.run('darkmagus/apt-test',
-      command='./docker-run.sh',
       volumes=volumes,
       detach=True,
+      network='cpos',
       environment={
         'PKG_LIST': buildPackageList(),
         'EXTRA_PACKAGES': buildExtraPackagesList()
@@ -56,3 +56,4 @@ if __name__ == '__main__':
   else:
     if common.verbose:
       print("output:", logs)
+    print("All packages installed successfully!")

@@ -17,7 +17,8 @@ def runDocker(archive: str):
     container = client.containers.run(
       'darkmagus/apt-test',
       volumes=volumes,
-      detach=True
+      detach=True,
+      network='cpos'
       )
     exitCode = container.wait()["StatusCode"]
     logs = container.logs().decode()
@@ -69,5 +70,7 @@ if __name__ == '__main__':
       p = mp.Process(target=runTest, args=(archive, queue))
       p.start()
       processes.append(p)
+  archiveCount = len(processes)
   joinProcesses(processes)
   assert not hasFailedRepo(queue)
+  print('All {} APT archives passed'.format(archiveCount))

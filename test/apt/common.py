@@ -9,9 +9,22 @@ extraPkgPath = os.path.abspath('../../basics/config/packages.chroot/')
 
 
 def buildTestImage():
+  print('Building darkmagus/apt-test image...')
   client = docker.from_env()
+  # Build the image
   with open('Dockerfile', 'rb') as dockerFile:
-    client.images.build(fileobj=dockerFile, tag='darkmagus/apt-test')
+    img, build_logs = client.images.build(
+      fileobj=dockerFile,
+      tag='darkmagus/apt-test',
+      network_mode='cpos'
+    )
+    # Print build logs
+    if verbose:
+      for chunk in build_logs:
+        if 'stream' in chunk:
+          for line in chunk['stream'].splitlines():
+            print(line)
+  print('Done.')
 
 
 def buildVolumes(dockerRunScript: str, archives: []):
