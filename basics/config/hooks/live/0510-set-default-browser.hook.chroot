@@ -2,6 +2,10 @@
 
 set -e
 
+if [ ! -f /usr/bin/brave-browser-stable ]; then
+  return 0
+fi
+
 update-alternatives --set x-www-browser /usr/bin/brave-browser-stable
 update-alternatives --set gnome-www-browser /usr/bin/brave-browser-stable
 
