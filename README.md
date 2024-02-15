@@ -3,69 +3,72 @@ This is a re-spin of the Debian Linux distribution suited for the needs of the C
 
 Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos)
 
-**TODO**
-1. - [x] Create a script for setting up our in house laptops
-2. - [x] Create a basic live boot iso
-3. - [x] Customize boot splash screen
-4. - [x] Set up CI server
-5. - [x] Adapt versioning system
-6. - [ ] Customize desktop
-7. - [x] Add boot menu option for persistence
-8. - [ ] Create a script/program that automates the making of a persistent USB flash drive
-9. - [ ] Implement install/update scripts for
-    * - [ ] Unity
-    * - [ ] Scratch3
-    * - [ ] Arduino
-    * - [ ] Firefox
-    * - [ ] Oracle Java JRE
-    * - [ ] Atom
-10. - [ ] Make documentation
-11. - [ ] Find cloud data storage solution for members
-12. - [ ] Create multiple builds
-    * - [x] 64 bit Cinnamon Heavy
-    * - [ ] ~32 bit Cinnamon Heavy~
-    * - [ ] 64 bit Cinnamon Light
-    * - [ ] 32 bit Cinnamon
-13. - [x] Construct automated test system for CI
-    * - [x] Create a simple smoke test
-    * - [ ] Create smoke tests for frequently used programs
-    * - [ ] Smoke tests for everything
-    * - [ ] Smoke tests for things that clearly does not need smoke tests
-    * - [ ] Some more smoke tests
+## TODO
+1. - [x] Create a basic live boot iso
+2. - [x] Customize boot splash screen
+3. - [x] Set up CI server
+4. - [x] Customize desktop
+5. - [x] Add boot menu option for persistence
+6. - [ ] Create a script/program that automates the making of a persistent USB flash drive
+7. - [x] Comprihensive list of programs
+8. - [ ] Harware support for devices
+        * [x] Oculus Quest 2
+9. - [ ] Make documentation
+10. - [ ] Find cloud data storage solution for members
+11. - [ ] Create multiple builds
+        * [x] 64 bit Cinnamon Heavy
+        * [ ] ~32 bit Cinnamon Heavy~
+        * [ ] 64 bit Cinnamon Light
+        * [ ] 32 bit Cinnamon
+12. - [x] Create test framework for APT
+        * [x] Archives lists
+        * [x] Packages lists
+13. - [x] Create a E2E framework
+14. - [ ] Create E2E tests for frequently used programs
+        * [ ] Unity
+        * [ ] Arduino IDE
+        * [ ] Visual Studio Codium
+        * [ ] Brave
+        * [ ] Firefox
+15. - [ ] Smoke tests for everything
+        * [ ] More tests for things that clearly does not need smoke tests
+        * [ ] Some more smoke tests
 
----
+## Quick Start Guide
 
-Update: July 28th 2019 <br>
->CPOS is now at version 0.1.1 shipping with a bunch of extra repositories. <br>
-Next goal is to make a script/program that can write the hybrid iso to a USB flash drive <br>
-and create a persistent partition. Afterwards the Update scripts will be implemented.
+### Get build system:
+``` shell
+git clone https://github.com/DarkMaguz/CodingPiratesOS.git
+```
 
----
+### Configuration:
+Packages marked for installation are listed inside files in the `basics/config/package-list/` directory. <br>
+You can edit/remove them to your liking. <br>
 
-Update: June 27th 2019 <br>
->Added the basics of an automated test system. This is still very much a work in progress. <br>
-In order to get started first create a symlink named 'image-to-be-tested.iso' in the <br>
-'images' folder pointing to the desired iso file that is to be tested. <br>
-Now go to the 'test' folder and run the commands: `docker-compose build` and `docker-compose up --exit-code-from test`.
+### Optional proxy server:
+This is only for those expect to build the OS repetively.
+``` shell
+cd proxy
+./setup-proxy.sh
+```
 
----
+### Optional RAM file system:
+Highly recommended if you have the memory to spare.
+``` shell
+sudo ./scripts/mount-ramfs.sh
+```
 
-Update: 31st March 2019 <br>
->It's now possible to use a persistence partition on the USB flash drive. <br>
-In order to use this feature it's necessary to have a file named "persistence.conf"
-in the root of the file-system that has a volume label named "persistence". <br>
-A directory and it's sub dirs can be made persistent by adding a
-path to that directory in the "persistence.conf" file i.e. '/home'. <br>
-See Manual page persistence.conf(5) for more information.
+### Build the OS:
+``` shell
+./start-build.sh
+```
+ISO image will be generated in `images/` directory. <br>
+They follow the naming convention `cpos-live-ARCH-MAJOR.MINOR.EPOCH.iso`. <br>
+Where `ARCH` is the architecture of the machine ie. `amd64`, `MAJOR` is the major version of the OS, `MINOR` is the minor version of the OS, and `EPOCH` is the unix epoch time of the build.
 
----
 
-Update: 21st March 2019 <br>
->A suggestion has been proposed regarding a short name for this project: CPOS. <br>
-Sounds official, I like it! <br>
+## Indepth documentation
 
----
-
-Initial commit: 13th December 2018<br>
->Priority is to get things up and running.<br>
-Afterwards we can make things look awesome!<br>
+[Live Manual](data/docs/live-manual.landscape.en.letter.pdf) <br>
+[Read The Docs](https://debian-live-config.readthedocs.io/en/latest/) <br>
+~~ [Quick overview](data/docs/The-live-build.pdf) ~~ <br>

@@ -1,0 +1,45 @@
+Update: Feburary 15th 2024 <br>
+>CPOS is now at version 0.3.1 after a long time of inactivity. <br>
+Since last update CPOS is now being build upon debian bookworm. <br>
+Varius repositories has been added/updated/removed. <br>
+Default browser is now Brave and default code editor is now VS Codium. <br>
+Finaly I found it necessary to add an optinal caching proxy server <br>
+to the build system, so not to get blocked by the repositories and <br>
+various other sources for packages and extensions. <br>
+
+---
+
+Update: July 28th 2019 <br>
+>CPOS is now at version 0.1.1 shipping with a bunch of extra repositories. <br>
+Next goal is to make a script/program that can write the hybrid iso to a USB flash drive <br>
+and create a persistent partition. Afterwards the Update scripts will be implemented.
+
+---
+
+Update: June 27th 2019 <br>
+>Added the basics of an automated test system. This is still very much a work in progress. <br>
+In order to get started first create a symlink named 'image-to-be-tested.iso' in the <br>
+'images' folder pointing to the desired iso file that is to be tested. <br>
+Now go to the 'test' folder and run the commands: `docker-compose build` and `docker-compose up --exit-code-from test`.
+
+---
+
+Update: 31st March 2019 <br>
+>It's now possible to use a persistence partition on the USB flash drive. <br>
+In order to use this feature it's necessary to have a file named "persistence.conf"
+in the root of the file-system that has a volume label named "persistence". <br>
+A directory and it's sub dirs can be made persistent by adding a
+path to that directory in the "persistence.conf" file i.e. '/home'. <br>
+See Manual page persistence.conf(5) for more information.
+
+---
+
+Update: 21st March 2019 <br>
+>A suggestion has been proposed regarding a short name for this project: CPOS. <br>
+Sounds official, I like it! <br>
+
+---
+
+Initial commit: 13th December 2018<br>
+>Priority is to get things up and running.<br>
+Afterwards we can make things look awesome!<br>
