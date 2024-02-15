@@ -1,2 +1,2 @@
 [org/gnome/shell]
-favorite-apps=['brave-browser.desktop', 'Firefox.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop', 'code.desktop', 'unityhub.desktop', 'org.gnome.gedit.desktop', 'libreoffice-startcenter.desktop', 'gnome-system-monitor.desktop', 'slack.desktop', 'steam.desktop', 'spotify.desktop', 'wireshark.desktop', 'virtualbox.desktop']
+favorite-apps=['brave-browser.desktop', 'Firefox.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop', 'codium.desktop', 'unityhub.desktop', 'org.gnome.gedit.desktop', 'libreoffice-startcenter.desktop', 'gnome-system-monitor.desktop', 'slack.desktop', 'steam.desktop', 'spotify.desktop', 'org.wireshark.Wireshark.desktop', 'virtualbox.desktop']

@@ -3,3 +3,4 @@ gtk-theme='Adwaita-dark'
 clock-show-date=true
 clock-show-weekday=true
 icon-theme='Adwaita'
+color-scheme='prefer-dark'

@@ -1,10 +1,10 @@
-distro
-build
-images
+/build/
+/images/
 __pycache__/
 *.py[cod]
 
-basics/**/disabled/
+/**/disabled/
 basics/config/packages.chroot/*.deb
+basics/config/apt/apt.conf
 
 /**/tmp/

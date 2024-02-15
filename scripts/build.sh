@@ -10,10 +10,12 @@ if [ $(id -u) != 0 ]; then
   exit
 fi
 
+# Make sure we have a place to put the images.
 if [ ! -d images/ ]; then
 	mkdir -p images/
 fi
 
+# Create or clean a build directory.
 if [ ! -d build/ ]; then
 	mkdir -p build/
 else
@@ -21,19 +23,25 @@ else
   rm -rf build/.build
 fi
 
+# If any proxy related environment variables are defined, 
+# copy the certificates to the config directory.
+if [ -n "$http_proxy" ] || \
+   [ -n "$https_proxy" ] || \
+   [ -n "$HTTP_PROXY" ] || \
+   [ -n "$HTTPS_PROXY" ]; then
+   mkdir -p build/config/certs/
+  cp certs/*.crt build/config/certs/
+fi
+
 # Fix bug missing debian-cd pakage.
-rm /usr/share/live/build/data/debian-cd/bullseye
-ln -s /usr/share/debian-cd/data/bullseye /usr/share/live/build/data/debian-cd/bullseye
+rm /usr/share/live/build/data/debian-cd/bookworm
+ln -s /usr/share/debian-cd/data/bookworm /usr/share/live/build/data/debian-cd/bookworm
 
 # Fix bug in debootstrap, when mounting /proc in docker.
 patch /usr/share/debootstrap/scripts/debian-common < data/patch/debian-common.patch
 
-# Debug skip compression of squashFS.
-#patch /usr/lib/live/build/binary_rootfs < data/patch/binary_rootfs.patch
-
-rm -rf build/config/
 # Copy config files to build dir.
-cp -r -u basics/* build/
+rsync -a --exclude=disabled/ basics/ build/
 
 cd build
 

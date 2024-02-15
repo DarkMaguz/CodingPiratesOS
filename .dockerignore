@@ -1,2 +1,7 @@
 build/
 images/
+tmp/
+proxy/cache/
+proxy/log/
+proxy/etc/squid/certs/*.key
+/**/tmp/

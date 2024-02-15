@@ -8,4 +8,4 @@ fi
 
 apt-get update
 
-apt-get install -y --no-install-recommends $PKG_LIST
+apt-get install -y --no-install-recommends --dry-run $PKG_LIST

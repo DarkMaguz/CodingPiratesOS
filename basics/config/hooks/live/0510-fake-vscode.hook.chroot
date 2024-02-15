@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+# In order to have Unity working nicely with VS Codium, 
+# we need Unity to think it is opening VS Code.
+
+ln -s /usr/bin/codium /usr/bin/code

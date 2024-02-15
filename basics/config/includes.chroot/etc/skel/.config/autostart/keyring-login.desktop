@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Keyring Login
+Exec=/usr/share/codingpirates/scripts/unlock-keyring.py
+Terminal=false
+Categories=System;Security;
+Type=Application
+StartupNotify=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=1

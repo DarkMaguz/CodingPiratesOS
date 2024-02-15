@@ -1,0 +1,2 @@
+# Should non-superusers be able to capture packets?
+wireshark-common	wireshark-common/install-setuid	boolean	true
