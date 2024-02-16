@@ -1,0 +1,42 @@
+#!/bin/sh
+
+set -e
+
+# Install VirtualBox Guest Additions
+
+# Create temp directory
+mkdir -p /tmp/vboxguestadditions/mnt
+cd /tmp/vboxguestadditions
+
+# Download the latest version of the VirtualBox Guest Additions
+#apt-get download virtualbox-guest-additions-iso
+DEB_URL=$(apt-get download --print-uris virtualbox-guest-additions-iso | cut -d " " -f 1 | tr -d "\'")
+wget -q $DEB_URL
+
+# Extract the package
+dpkg-deb -x virtualbox-guest-additions-iso*.deb .
+
+# Create block file for loop device
+mknod -m660 /dev/loop0 b 7 0
+chown root:disk /dev/loop0
+chmod 666 /dev/loop0
+mknod -m660 /dev/loop1 b 7 1
+chown root:disk /dev/loop1
+chmod 666 /dev/loop1
+
+# Mount the ISO image
+mount -o loop,ro usr/share/virtualbox/VBoxGuestAdditions.iso mnt
+
+# Install the Guest Additions
+# This will return a non-zero exit code because it is not desigened to be run in chroot,
+# but it is not a problem because the script will continue anyway.
+./mnt/VBoxLinuxAdditions.run --quiet --accept --noprogress --nox11 || true
+
+# Unmount the ISO image
+umount mnt
+
+# Remove the temporary directory
+cd / && rm -rf /tmp/vboxguestadditions
+
+# Build VirtualBox Guest Additions kernel module
+/sbin/rcvboxadd quicksetup all
