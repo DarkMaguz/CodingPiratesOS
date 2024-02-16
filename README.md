@@ -16,23 +16,23 @@ Latest builds can be found at: [darkmagus.dk/cpos](https://www.darkmagus.dk/cpos
 9. - [ ] Make documentation
 10. - [ ] Find cloud data storage solution for members
 11. - [ ] Create multiple builds
-        * [x] 64 bit Cinnamon Heavy
-        * [ ] ~32 bit Cinnamon Heavy~
-        * [ ] 64 bit Cinnamon Light
-        * [ ] 32 bit Cinnamon
+      * [x] 64 bit Cinnamon Heavy
+      * [ ] ~32 bit Cinnamon Heavy~
+      * [ ] 64 bit Cinnamon Light
+      * [ ] 32 bit Cinnamon
 12. - [x] Create test framework for APT
-        * [x] Archives lists
-        * [x] Packages lists
+      * [x] Archives lists
+      * [x] Packages lists
 13. - [x] Create a E2E framework
 14. - [ ] Create E2E tests for frequently used programs
-        * [ ] Unity
-        * [ ] Arduino IDE
-        * [ ] Visual Studio Codium
-        * [ ] Brave
-        * [ ] Firefox
+      * [ ] Unity
+      * [ ] Arduino IDE
+      * [ ] Visual Studio Codium
+      * [ ] Brave
+      * [ ] Firefox
 15. - [ ] Smoke tests for everything
-        * [ ] More tests for things that clearly does not need smoke tests
-        * [ ] Some more smoke tests
+      * [ ] More tests for things that clearly does not need smoke tests
+      * [ ] Some more smoke tests
 
 ## Quick Start Guide
 
@@ -71,4 +71,4 @@ Where `ARCH` is the architecture of the machine ie. `amd64`, `MAJOR` is the majo
 
 [Live Manual](data/docs/live-manual.landscape.en.letter.pdf) <br>
 [Read The Docs](https://debian-live-config.readthedocs.io/en/latest/) <br>
-~~ [Quick overview](data/docs/The-live-build.pdf) ~~ <br>
+[~Quick overvie~](data/docs/The-live-build.pdf) <br>
