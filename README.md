@@ -20,7 +20,8 @@ Start by downloading an ISO file from [https://www.darkmagus.dk/cpos/images/mast
 | --- | --- | --- |
 | Arduino IDE | Arduino IDE |  |
 | Atom | Text editor |  |
-| Brave | The web browser | 
+| Brave | The web browser |
+| Blender | 3D modeling |  | 
 | Codium | Text editor |  |
 | Discord | The chat client |  |
 | Docker | VM Containerization |  |
